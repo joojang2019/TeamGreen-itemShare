@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import Banner from './components/Banner';
 import Search from './components/Search';
 import ItemList from './components/ItemList';
+import ItemPage from './components/ItemPage';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+
 
 
 const data = {
   "items": [
     {
+      "id": 1,
       "name": "Canon 555",
       "type": "camera",
       "location": "Foster-Walker Complex",
@@ -16,6 +20,7 @@ const data = {
       "price": "3.99"
     },
     {
+      "id": 2,
       "name": "Cool Bike 255",
       "type": "bike",
       "location": "Elder",
@@ -25,6 +30,7 @@ const data = {
       "price": "5.50"
     },
     {
+      "id": 3,
       "name": "Used bike 333",
       "type": "bike",
       "location": "1500 Chicago Avenue",
@@ -34,6 +40,7 @@ const data = {
       "price": "20.99"
     },
     {
+      "id": 4,
       "name": "sick camera 555",
       "type": "camera",
       "location": "Foster-Walker Complex",
@@ -45,17 +52,34 @@ const data = {
   ]
 };
 
-const App = () =>  {
+const MainPage = () =>{
   const [searchTerm, setSearchTerm] = useState("");
 
   return(
     <div>
-      <Banner />
       <Search state={{searchTerm, setSearchTerm}} />
       <ItemList items={data.items}/>
-  </div>
+      
+    </div>
+  );
+
+}
+
+const App = () =>  {
+  return(
+    <Router>
+      <div>
+        <Banner />
+        <Switch>
+          <Route path="/" exact component ={MainPage}/>
+          <Route path="/:id" render={() => <ItemPage items={data.items}/>} />
+        </Switch>
+
+      </div>
+    </Router>
   );
   
 };
 
 export default App;
+export {data};
