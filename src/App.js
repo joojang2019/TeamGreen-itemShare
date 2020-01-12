@@ -10,6 +10,7 @@ import {
   useLocation
 } from "react-router-dom";
 
+// need to get it from firebase
 const data = {
   items: [
     {
@@ -65,7 +66,8 @@ const MainPage = () => {
     "search_query"
   );
   const filteredItems = data.items.filter(item =>
-    item.type.startsWith(searchQuery)
+    item.type.toLowerCase().startsWith(searchQuery.toLowerCase()) || 
+    item.name.toLowerCase().startsWith(searchQuery.toLowerCase())
   );
   if (searchQuery && JSON.stringify(items) !== JSON.stringify(filteredItems)) {
     setItems(filteredItems);
