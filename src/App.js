@@ -65,13 +65,17 @@ const MainPage = () => {
   const searchQuery = new URLSearchParams(useLocation().search).get(
     "search_query"
   );
-  const filteredItems = data.items.filter(item =>
-    item.type.toLowerCase().startsWith(searchQuery.toLowerCase()) || 
-    item.name.toLowerCase().startsWith(searchQuery.toLowerCase())
-  );
-  if (searchQuery && JSON.stringify(items) !== JSON.stringify(filteredItems)) {
-    setItems(filteredItems);
+
+  if(searchQuery){
+    const filteredItems = data.items.filter(item =>
+      item.type.toLowerCase().startsWith(searchQuery.toLowerCase()) || 
+      item.name.toLowerCase().startsWith(searchQuery.toLowerCase())
+    );
+    if (JSON.stringify(items) !== JSON.stringify(filteredItems)) {
+      setItems(filteredItems);
+    }
   }
+  
   return (
     <div>
       <Search />
