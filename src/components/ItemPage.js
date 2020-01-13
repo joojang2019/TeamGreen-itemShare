@@ -3,7 +3,12 @@ import { useParams } from "react-router-dom";
 
 const ItemPage = ({ items }) => {
   const { id } = useParams();
-  const item = items[id - 1];
+  if(items.length===0) return null;
+
+
+  //need update incase we change how we assign id
+  const item = items[id];
+
   return (
     <div>
       <img alt="" src={item.img}></img>
