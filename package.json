@@ -1,11 +1,12 @@
 {
-  "name": "loc-share",
+  "name": "item-share",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "firebase": "^7.6.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
@@ -31,5 +32,21 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aakanksha1/TeamGreen-itemShare.git"
+  },
+  "keywords": [
+    "itemshare"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aakanksha1/TeamGreen-itemShare/issues"
+  },
+  "homepage": "https://github.com/aakanksha1/TeamGreen-itemShare#readme"
 }
