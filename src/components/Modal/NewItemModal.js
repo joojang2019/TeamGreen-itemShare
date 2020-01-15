@@ -22,7 +22,7 @@ function getModalStyle() {
     transform: `translate(-${top}%, -${left}%)`
   };
 }
-
+//REVISION NEEDED-- NOT TESTED YET
 function writeNewPost(item) {
   // Get a key for a new Post.
   const newPostKey = db.child("items").push().key;
