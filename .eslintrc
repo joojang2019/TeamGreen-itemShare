@@ -1,0 +1,15 @@
+{
+  "extends": ["eslint:recommended", "prettier", "plugin:react/recommended"],
+  "rules": {
+    "indent": ["error", 2],
+    "semi": ["error", "always"]
+  },
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": { "browser": true }
+}
