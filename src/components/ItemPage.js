@@ -1,10 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
 
 const ItemPage = ({ items }) => {
   const { id } = useParams();
-  if(items.length===0) return null;
-
+  if (items.length === 0) return null;
 
   //need update incase we change how we assign id
   const item = items[id];
@@ -17,6 +17,10 @@ const ItemPage = ({ items }) => {
       <p>{item.availableTill}</p>
     </div>
   );
+};
+
+ItemPage.propTypes = {
+  items: PropTypes.array
 };
 
 export default ItemPage;

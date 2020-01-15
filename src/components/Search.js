@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import {Link, useHistory} from "react-router-dom";
-
-
+import { Link, useHistory } from "react-router-dom";
 
 const Search = () => {
   const [currTerm, setCurrTerm] = useState("");
@@ -13,9 +11,9 @@ const Search = () => {
   };
 
   // Case of enter
-  const handleEnter = (e) =>{
-    if(e.keyCode === 13) history.push(searchTerm);
-  }
+  const handleEnter = e => {
+    if (e.keyCode === 13) history.push(searchTerm);
+  };
 
   return (
     <div>
@@ -29,7 +27,6 @@ const Search = () => {
       <Link to={searchTerm}>
         <button>Search</button>
       </Link>
-      
     </div>
   );
 };
