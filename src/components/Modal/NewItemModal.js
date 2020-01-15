@@ -34,26 +34,25 @@ function writeNewPost(item) {
   return db.update(updates);
 }
 
+const useStyles = makeStyles(theme => ({
+  modal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  paper: {
+    backgroundColor: theme.palette.background.paper,
+    position: "absolute",
+    border: "2px solid #000",
+    width: 600,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3)
+  }
+}));
+
 const NewItemModal = () => {
   const { currentModal, setCurrentModal } = useContext(ModalContext);
   const [modalStyle] = React.useState(getModalStyle);
-
-  const useStyles = makeStyles(theme => ({
-    modal: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center"
-    },
-    paper: {
-      backgroundColor: { blue },
-      position: "absolute",
-      border: "2px solid #000",
-      width: 600,
-      boxShadow: theme.shadows[5],
-      padding: theme.spacing(2, 4, 3)
-    }
-  }));
-
   const classes = useStyles();
 
   return (
