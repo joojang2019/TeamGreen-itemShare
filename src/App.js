@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Banner from './components/Banner';
 import Search from './components/Search';
 import ItemList from './components/ItemList';
-
+import { ModalContextProvider} from './Context/ModalContext'; 
+import ModalManager from './components/Modal/ModalManager';
 
 const data = {
   "items": [
@@ -47,15 +48,18 @@ const data = {
 
 const App = () =>  {
   const [searchTerm, setSearchTerm] = useState("");
-
-  return(
-    <div>
-      <Banner />
-      <Search state={{searchTerm, setSearchTerm}} />
-      <ItemList items={data.items}/>
-  </div>
-  );
   
+  return(
+  <ModalContextProvider>
+      <ModalManager/>
+      <div>
+        <Banner />
+        <Search state={{searchTerm, setSearchTerm}} />
+
+        <ItemList items={data.items}/>
+      </div>
+  </ModalContextProvider>
+  );
 };
 
 export default App;
