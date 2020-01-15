@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect} from "react";
 import Banner from "./components/Banner";
 import MainPage from  './MainPage';
@@ -52,6 +53,7 @@ const App = () => {
       </div>
     </Router>
     );
+
 };
 
 export default App;
