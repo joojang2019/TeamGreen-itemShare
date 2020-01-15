@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-import Grid from  "@material-ui/core/Grid";
+import Grid from "@material-ui/core/Grid";
 import InputBase from "@material-ui/core/InputBase";
 import IconButton from "@material-ui/core/IconButton";
 
@@ -46,6 +46,7 @@ export default function Search() {
   const handleEnter = e => {
     if (e.keyCode === 13) history.push(searchTerm);
   };
+
   return (
     <div className={classes.searchbar}>
       <b>
@@ -53,29 +54,24 @@ export default function Search() {
           itemShare. Northwestern's premier rental marketplace.
         </p>
       </b>
-      <Grid 
-      container 
-      justify = "center"
-      >
-        
-      <Paper component="form" className={classes.root}>
-        <InputBase
-          className={classes.input}
-          placeholder="Search for items"
-          value={currTerm}
-          onChange={changeCurrTerm}
-          onKeyDown={handleEnter}
-        />
-
-        <Link to={searchTerm}>
-          <IconButton
-            className={classes.iconButton}
-            aria-label="search"
-          ></IconButton>
-          <SearchIcon />
-        </Link>
-      </Paper>
-    </Grid>
+      <Grid container justify="center">
+        <Paper className={classes.root}>
+          <InputBase
+            className={classes.input}
+            placeholder="Search for items"
+            value={currTerm}
+            onChange={changeCurrTerm}
+            onKeyDown={handleEnter}
+          />
+          <Link to={searchTerm}>
+            <IconButton
+              className={classes.iconButton}
+              aria-label="search"
+            ></IconButton>
+            <SearchIcon />
+          </Link>
+        </Paper>
+      </Grid>
     </div>
   );
 }
