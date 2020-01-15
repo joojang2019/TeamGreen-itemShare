@@ -37,6 +37,7 @@ function writeNewPost(item) {
 const NewItemModal = () => {
   const { currentModal, setCurrentModal } = useContext(ModalContext);
   const [modalStyle] = React.useState(getModalStyle);
+
   const useStyles = makeStyles(theme => ({
     modal: {
       display: "flex",
@@ -44,7 +45,7 @@ const NewItemModal = () => {
       justifyContent: "center"
     },
     paper: {
-      backgroundColor: blue,
+      backgroundColor: { blue },
       position: "absolute",
       border: "2px solid #000",
       width: 600,
@@ -62,13 +63,9 @@ const NewItemModal = () => {
         aria-describedby="simple-modal-description"
         open={currentModal}
         onClose={() => setCurrentModal(false)}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center"
-        }}
         BackdropComponent={Backdrop}
         className={classes.modal}
+        data-background={false}
         BackdropProps={{
           timeout: 600,
           classes: {
@@ -78,7 +75,12 @@ const NewItemModal = () => {
           }
         }}
       >
-        <div style={modalStyle} className={classes.paper} data-backdrop="false">
+        <div
+          style={modalStyle}
+          className={classes.paper}
+          data-color="blue"
+          data-backdrop="false"
+        >
           <form
             noValidate
             autoComplete="off"
