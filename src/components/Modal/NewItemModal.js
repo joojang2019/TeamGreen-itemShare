@@ -24,7 +24,6 @@ function getModalStyle() {
 
 
 
-
 const NewItemModal = () => {
     const {currentModal, setCurrentModal} = useContext(ModalContext);
     const [modalStyle] = React.useState(getModalStyle);
@@ -68,7 +67,7 @@ const NewItemModal = () => {
         <div style={modalStyle} className={classes.paper}>
             <form noValidate autoComplete="off">
                 
-                <TextField id="standard-basic" label="Standard" 
+                <TextField 
                     id="name"
                     label="Full Name"
                     style={{ margin: 8 }}
@@ -83,7 +82,7 @@ const NewItemModal = () => {
                     //onInput = {}
                 />
 
-                <TextField id="standard-basic" label="Standard" 
+                <TextField 
                     id="type"
                     label="Model of Item"
                     style={{ margin: 8 }}
@@ -98,7 +97,7 @@ const NewItemModal = () => {
                     //onInput = {}
                 />
 
-                <TextField id="standard-basic" label="Standard" 
+                <TextField 
                     id="location"
                     label="Your Location"
                     style={{ margin: 8 }}
@@ -112,7 +111,7 @@ const NewItemModal = () => {
                     autoFocus
                     //onInput = {}
                 />
-                <TextField id="standard-basic" label="Standard" 
+                <TextField 
                     id="user"
                     label="Username"
                     style={{ margin: 8 }}
@@ -127,7 +126,7 @@ const NewItemModal = () => {
                     //onInput = {}
                 />
 
-                <TextField id="standard-basic" label="Standard" 
+                <TextField 
                     id="avaliableTil"
                     label="Item Avaliable Until"
                     style={{ margin: 8 }}
@@ -141,7 +140,7 @@ const NewItemModal = () => {
                     autoFocus
                     //onInput = {}
                 />
-                <TextField id="standard-basic" label="Standard" 
+                <TextField 
                     id="price"
                     label="Price"
                     style={{ margin: 8 }}
@@ -164,12 +163,6 @@ const NewItemModal = () => {
         </div>
     </Modal>
 }
-/*
-<form className={classes.root} noValidate autoComplete="off">
-  <TextField id="standard-basic" label="Standard" />
-  <TextField id="filled-basic" label="Filled" variant="filled" />
-  <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-</form>
-*/
+
 export default NewItemModal;
 
