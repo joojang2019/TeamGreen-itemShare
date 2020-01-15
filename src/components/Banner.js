@@ -1,15 +1,10 @@
-import React from 'react';
-import logo_item_share from '..//logo_item_share.png'
+import React from "react";
+import logo_item_share from "..//logo_item_share.png";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
+import { Link } from "react-router-dom";
 
 import Box from "@material-ui/core/Box";
-
-// const Banner = () => {
-//     //var image = require('..//logo_item_share.png'); 
-//     return(<img src={logo_item_share} alt= "itemShare"></img>);
-// }
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,7 +24,11 @@ export default function Banner() {
     <div className={classes.root}>
       <Box boxShadow="2" height="75px">
         <Toolbar>
-          <Typography variant="h4">itemShare</Typography>
+          <div style={{ marginTop: "-70px" }}>
+            <Link to="/">
+              <img src={logo_item_share} alt="" />
+            </Link>
+          </div>
         </Toolbar>
       </Box>
     </div>
