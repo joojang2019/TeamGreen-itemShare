@@ -8,7 +8,8 @@ import ButtonBase from "@material-ui/core/ButtonBase";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+
   },
   paper: {
     padding: theme.spacing(2),
@@ -16,16 +17,17 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 500,
     marginBottom: "12px"
   },
-  // image: {
-  //   maxWidth: 500,
-  //   maxHeight: 500
-  // },
-  // img: {
-  //   margin: "auto",
-  //   display: "block",
-  //   maxWidth: "128px",
-  //   maxHeight: "128px"
-  // }
+   image: {
+      justifyContent: 'center !important'
+   },
+
+   img: {
+      //  margin: "auto",
+        display: "relative",
+        maxWidth: "50%",
+        minWidth: "50%",
+        justifyContent: "center"
+   }
 }));
 export default function Item({ item }) {
   const classes = useStyles();
@@ -34,9 +36,10 @@ export default function Item({ item }) {
       <div className={classes.root}>
         <Paper className={classes.paper}>
           <Grid container item xs={12} sm={12} md={12} lg={12}>
-            <Grid item zeroMinWidth>
-              <ButtonBase className={classes.image}>
-                <img src={item.img} alt=""></img>
+            <Grid>
+             
+              <ButtonBase className={classes.image} justify="center">
+                <img className={classes.img} src={item.img} alt=""></img>
               </ButtonBase>
             </Grid>
             <Grid>
