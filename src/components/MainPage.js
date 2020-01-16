@@ -1,16 +1,17 @@
 import React from "react";
-import PropTypes from "prop-types";
 import ItemList from "./ItemList";
 import Search from "./Search";
 import { useLocation } from "react-router-dom";
+import { ModalContextProvider } from "../contexts/ModalContext";
+import ModalManager from "./Modal/ModalManager";
 
-const MainPage = ({ items, setItems }) => {
+const MainPage = ({ items, setItems, allItems }) => {
   const searchQuery = new URLSearchParams(useLocation().search).get(
     "search_query"
   );
 
   if (searchQuery) {
-    const filteredItems = items.filter(
+    const filteredItems = allItems.filter(
       item =>
         item.type.toLowerCase().startsWith(searchQuery.toLowerCase()) ||
         item.name.toLowerCase().startsWith(searchQuery.toLowerCase())
@@ -21,16 +22,14 @@ const MainPage = ({ items, setItems }) => {
   }
 
   return (
-    <div>
-      <Search />
-      <ItemList items={items} />
-    </div>
+    <ModalContextProvider>
+      <div>
+        <Search />
+        <ModalManager />
+        <ItemList items={items} />
+      </div>
+    </ModalContextProvider>
   );
-};
-
-MainPage.propTypes = {
-  items: PropTypes.array,
-  setItems: PropTypes.func
 };
 
 export default MainPage;

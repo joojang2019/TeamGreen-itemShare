@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import Banner from "./components/Banner";
 import MainPage from "./components/MainPage";
 import ItemPage from "./components/ItemPage";
-
+import Footer from "./components/Footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-//firebase
+// Firebase
 import firebase from "firebase/app";
 import "firebase/database";
 
@@ -26,10 +26,14 @@ const db = firebase.database().ref();
 
 const App = () => {
   const [items, setItems] = useState([]);
+  const [allItems, setAllItems] = useState([]);
 
   useEffect(() => {
     const handleData = snap => {
-      if (snap.val()) setItems(snap.val().items);
+      if (snap.val()) {
+        setAllItems(snap.val().items);
+        setItems(snap.val().items);
+      }
     };
     db.on("value", handleData, error => alert(error));
     return () => {
@@ -45,18 +49,22 @@ const App = () => {
           <Route
             path="/"
             exact
-            render={() => <MainPage items={items} setItems={setItems} />}
+            render={() => <MainPage items={allItems} setItems={setItems} />}
           />
           <Route
             path="/results"
             exact
-            render={() => <MainPage items={items} setItems={setItems} />}
+            render={() => (
+              <MainPage items={items} setItems={setItems} allItems={allItems} />
+            )}
           />
           <Route path="/:id" render={() => <ItemPage items={items} />} />
         </Switch>
+        <Footer />
       </div>
     </Router>
   );
 };
 
 export default App;
+export { db };
