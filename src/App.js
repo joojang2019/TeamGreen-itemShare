@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Banner from "./components/Banner";
-import MainPage from "./MainPage";
+import MainPage from "./components/MainPage";
 import ItemPage from "./components/ItemPage";
 import Footer from "./components/Footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-//firebase
+// Firebase
 import firebase from "firebase/app";
 import "firebase/database";
 

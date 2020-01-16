@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import NewItemModal from "./NewItemModal";
-import { ModalContext } from "../../Context/ModalContext";
+import { ModalContext } from "../../contexts/ModalContext";
 
 const ModalManager = () => {
   const { setCurrentModal } = useContext(ModalContext);

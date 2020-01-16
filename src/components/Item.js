@@ -8,8 +8,7 @@ import ButtonBase from "@material-ui/core/ButtonBase";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
-
+    flexGrow: 1
   },
   paper: {
     padding: theme.spacing(2),
@@ -17,17 +16,17 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 500,
     marginBottom: "12px"
   },
-   image: {
-      justifyContent: 'center !important'
-   },
+  image: {
+    justifyContent: "center !important"
+  },
 
-   img: {
-      //  margin: "auto",
-        display: "relative",
-        maxWidth: "50%",
-        minWidth: "50%",
-        justifyContent: "center"
-   }
+  img: {
+    //  margin: "auto",
+    display: "relative",
+    maxWidth: "50%",
+    minWidth: "50%",
+    justifyContent: "center"
+  }
 }));
 export default function Item({ item }) {
   const classes = useStyles();
@@ -37,20 +36,18 @@ export default function Item({ item }) {
         <Paper className={classes.paper}>
           <Grid container item xs={12} sm={12} md={12} lg={12}>
             <Grid>
-             
               <ButtonBase className={classes.image} justify="center">
                 <img className={classes.img} src={item.img} alt=""></img>
               </ButtonBase>
             </Grid>
             <Grid>
-            <Grid container item xs={12} sm={12} md={12} lg={12}>
-                  <Typography gutterBottom variant="subtitle1">
-                    {item.name}
-                  </Typography>
-                <Grid>
-                </Grid>
-                </Grid>
-                <Grid>
+              <Grid container item xs={12} sm={12} md={12} lg={12}>
+                <Typography gutterBottom variant="subtitle1">
+                  {item.name}
+                </Typography>
+                <Grid></Grid>
+              </Grid>
+              <Grid>
                 <Grid container item xs={12} sm={12} md={12} lg={12}>
                   <Typography variant="body2" color="textSecondary">
                     Available till: {item.availableTill}
@@ -58,12 +55,12 @@ export default function Item({ item }) {
                 </Grid>
               </Grid>
               <Grid>
-              <Grid container item xs={12} sm={12} md={12} lg={12}>
-                <Typography variant="subtitle1">${item.price}/day</Typography>
-              </Grid>
+                <Grid container item xs={12} sm={12} md={12} lg={12}>
+                  <Typography variant="subtitle1">${item.price}/day</Typography>
+                </Grid>
               </Grid>
             </Grid>
-            </Grid>
+          </Grid>
         </Paper>
       </div>
     </Link>

@@ -1,9 +1,9 @@
 import React from "react";
-import ItemList from "./components/ItemList";
-import Search from "./components/Search";
+import ItemList from "./ItemList";
+import Search from "./Search";
 import { useLocation } from "react-router-dom";
-import { ModalContextProvider } from "./Context/ModalContext";
-import ModalManager from "./components/Modal/ModalManager";
+import { ModalContextProvider } from "../contexts/ModalContext";
+import ModalManager from "./Modal/ModalManager";
 
 const MainPage = ({ items, setItems, allItems }) => {
   const searchQuery = new URLSearchParams(useLocation().search).get(

@@ -51,7 +51,7 @@ export default function Search() {
     <div className={classes.searchbar}>
       <b>
         <p className={classes.mytext}>
-          itemShare. Northwestern's premier rental marketplace.
+          itemShare. Northwestern&apos;s premier rental marketplace.
         </p>
       </b>
       <Grid container justify="center">

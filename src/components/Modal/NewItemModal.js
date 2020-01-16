@@ -1,12 +1,10 @@
 import React, { useContext } from "react";
-import { ModalContext } from "../../Context/ModalContext";
+import { ModalContext } from "../../contexts/ModalContext";
 import Modal from "@material-ui/core/Modal";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Backdrop from "@material-ui/core/Backdrop";
-import { blue } from "@material-ui/core/colors";
-import Button from "@material-ui/core/Button";
-import { db } from "../../App";
+// import { db } from "../../App";
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -22,8 +20,8 @@ function getModalStyle() {
     transform: `translate(-${top}%, -${left}%)`
   };
 }
-//REVISION NEEDED-- NOT TESTED YET
-function writeNewPost(item) {
+// REVISION NEEDED-- NOT TESTED YET
+/* function writeNewPost(item) {
   // Get a key for a new Post.
   const newPostKey = db.child("items").push().key;
 
@@ -32,7 +30,7 @@ function writeNewPost(item) {
   updates["/items/" + newPostKey] = item;
 
   return db.update(updates);
-}
+} */
 
 const useStyles = makeStyles(theme => ({
   modal: {
