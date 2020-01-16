@@ -27,6 +27,7 @@ export default function ItemPage({ items }) {
 
       <p>${item.price}</p>
       <p>{item.availableTill}</p>
+      <p>Email:{item.email}</p>
       <Link to="/">
         <button>Back to main page</button>
       </Link>
