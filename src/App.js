@@ -3,6 +3,7 @@ import Banner from "./components/Banner";
 import MainPage from "./components/MainPage";
 import ItemPage from "./components/ItemPage";
 import Footer from "./components/Footer";
+import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // Firebase
