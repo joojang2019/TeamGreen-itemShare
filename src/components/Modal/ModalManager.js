@@ -1,15 +1,21 @@
-import React, { useContext } from "react";
+import React, { Fragment, useState } from "react";
 import NewItemModal from "./NewItemModal";
-import { ModalContext } from "../../contexts/ModalContext";
+import { Button } from "@material-ui/core";
 
 const ModalManager = () => {
-  const { setCurrentModal } = useContext(ModalContext);
-
+  const [modalOpen, setModalOpen] = useState(false);
   return (
-    <div>
-      <NewItemModal />
-      <button onClick={() => setCurrentModal(true)}>Add Item</button>
-    </div>
+    <Fragment>
+      <NewItemModal state={{ modalOpen, setModalOpen }} />
+      <Button
+        id="add-item-button"
+        style={{ position: "absolute", right: "10%" }}
+        variant="contained"
+        onClick={() => setModalOpen(true)}
+      >
+        Add Item
+      </Button>
+    </Fragment>
   );
 };
 

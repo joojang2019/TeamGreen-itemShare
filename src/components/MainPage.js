@@ -2,7 +2,6 @@ import React from "react";
 import ItemList from "./ItemList";
 import Search from "./Search";
 import { useLocation } from "react-router-dom";
-import { ModalContextProvider } from "../contexts/ModalContext";
 import ModalManager from "./Modal/ModalManager";
 
 const MainPage = ({ items, setItems, allItems }) => {
@@ -22,13 +21,11 @@ const MainPage = ({ items, setItems, allItems }) => {
   }
 
   return (
-    <ModalContextProvider>
-      <div>
-        <Search />
-        <ModalManager />
-        <ItemList items={items} />
-      </div>
-    </ModalContextProvider>
+    <div>
+      <ModalManager />
+      <Search />
+      <ItemList items={items} />
+    </div>
   );
 };
 
