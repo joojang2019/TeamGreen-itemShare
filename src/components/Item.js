@@ -1,68 +1,68 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
-import ButtonBase from "@material-ui/core/ButtonBase";
+import Card from '@material-ui/core/Card';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import { Grid } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
   },
-  paper: {
-    padding: theme.spacing(2),
-    margin: "auto",
-    maxWidth: 500,
-    marginBottom: "12px"
+
+  card: {
+    marginTop: "5em",
+    padding: "0.5em"
+    
   },
-  image: {
-    justifyContent: "center !important"
+  media: {
+    paddingTop: "25%",
+    justifyContent: "center",
+    width: "20em",
+    height: "10em"
+
+  },
+  cardContent: {
+    background: "#455a64",
+    marginTop: "2em",
+    height: "5em"
   },
 
-  img: {
-    //  margin: "auto",
-    display: "relative",
-    maxWidth: "50%",
-    minWidth: "50%",
-    justifyContent: "center"
+  typography: {
+    color: "white"
   }
+  
 }));
 export default function Item({ item }) {
   const classes = useStyles();
   return (
     <Link to={`/${item.id}`}>
-      <div className={classes.root}>
-        <Paper className={classes.paper}>
-          <Grid container item xs={12} sm={12} md={12} lg={12}>
-            <Grid>
-              <ButtonBase className={classes.image} justify="center">
-                <img className={classes.img} src={item.img} alt=""></img>
-              </ButtonBase>
+      <Grid container justify="center">
+        <Grid item xs = {12} sm = {12} md = {6} lg={6}>
+          <Card className={classes.card}>
+            <Grid container justify = "center">
+              <CardMedia
+                className={classes.media}
+                image={item.img}
+              />
             </Grid>
-            <Grid>
-              <Grid container item xs={12} sm={12} md={12} lg={12}>
-                <Typography gutterBottom variant="subtitle1">
-                  {item.name}
-                </Typography>
-                <Grid></Grid>
-              </Grid>
-              <Grid>
-                <Grid container item xs={12} sm={12} md={12} lg={12}>
-                  <Typography variant="body2" color="textSecondary">
-                    Available till: {item.availableTill}
-                  </Typography>
-                </Grid>
-              </Grid>
-              <Grid>
-                <Grid container item xs={12} sm={12} md={12} lg={12}>
-                  <Typography variant="subtitle1">${item.price}/day</Typography>
-                </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Paper>
-      </div>
+            <CardContent className={classes.cardContent}>
+              <Typography gutterBottom variant="h5" component="h1" className={classes.typography}>
+                {item.name}
+              </Typography>
+              <Typography variant="body1" color="textPrimary" component="p" className={classes.typography}>
+          Price: {item.price}
+              </Typography>
+              <Typography variant="body1" color="textPrimary" component="p" className={classes.typography}>
+          Available Till: {item.availableTill}
+              </Typography>
+            </CardContent>
+      
+          </Card>
+        </Grid>
+      </Grid>
     </Link>
   );
 }
