@@ -13,7 +13,8 @@ const useStyles = makeStyles(() => ({
   },
 
   card: {
-    marginTop: "5em"
+    marginTop: "5em",
+    padding: "0.5em"
     
   },
 
@@ -24,9 +25,15 @@ const useStyles = makeStyles(() => ({
     height: "10em"
 
   },
+
   cardContent: {
-    background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
-    marginTop: "2em"
+    background: "#455a64",
+    marginTop: "2em",
+    height: "6em"
+  },
+
+  typography: {
+    color: "white"
   }
 }));
 
@@ -53,16 +60,16 @@ export default function ItemPage({ items }) {
             />
           </Grid>
           <CardContent className={classes.cardContent}>
-            <Typography gutterBottom variant="h5" component="h1">
+            <Typography gutterBottom variant="h5" component="h1" className={classes.typography}>
               {item.name}
             </Typography>
-            <Typography variant="body1" color="textPrimary" component="p">
+            <Typography variant="body1" color="textPrimary" component="p" className={classes.typography}>
           Price: {item.price}
             </Typography>
-            <Typography variant="body1" color="textPrimary" component="p">
+            <Typography variant="body1" color="textPrimary" component="p" className={classes.typography}>
           Available Till: {item.availableTill}
             </Typography>
-            <Typography variant="body1" color="textPrimary" component="p">
+            <Typography variant="body1" color="textPrimary" component="p" className={classes.typography}>
           Contact Information: {item.email}
             </Typography>
           </CardContent>
