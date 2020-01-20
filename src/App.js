@@ -13,14 +13,13 @@ import "firebase/database";
 
 // Firebase Config
 const firebaseConfig = {
-  apiKey: "AIzaSyC6Ik083ha_1IPkKklf1qdl1jdvvF4oDrs",
-  authDomain: "item-1b883.firebaseapp.com",
-  databaseURL: "https://item-1b883.firebaseio.com",
-  projectId: "item-1b883",
-  storageBucket: "item-1b883.appspot.com",
-  messagingSenderId: "512831900868",
-  appId: "1:512831900868:web:c3e2d30285e6584d0fcd91",
-  measurementId: "G-NHVDY8ZB8W"
+  apiKey: "AIzaSyCBTX-6ANlkTp1VBa3DtteC3IidMEVuv1g",
+  authDomain: "itemshare-94837.firebaseapp.com",
+  databaseURL: "https://itemshare-94837.firebaseio.com",
+  projectId: "itemshare-94837",
+  storageBucket: "itemshare-94837.appspot.com",
+  messagingSenderId: "536577401914",
+  appId: "1:536577401914:web:ab909fc4da2fcf0302c103"
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -33,8 +32,8 @@ const App = () => {
   useEffect(() => {
     const handleData = snap => {
       if (snap.val()) {
-        setAllItems(snap.val().items);
-        setItems(snap.val().items);
+        setAllItems(Object.entries(snap.val().items));
+        setItems(Object.entries(snap.val().items));
       }
     };
     db.on("value", handleData, error => alert(error));
