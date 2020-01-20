@@ -28,6 +28,7 @@ const db = firebase.database().ref();
 const App = () => {
   const [items, setItems] = useState([]);
   const [allItems, setAllItems] = useState([]);
+  const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
     const handleData = snap => {
@@ -44,12 +45,18 @@ const App = () => {
 
   return (
     <Router>
-      <Banner />
+      <Banner currentUser={currentUser} />
       <Switch>
         <Route
           path="/"
           exact
-          render={() => <MainPage items={allItems} setItems={setItems} />}
+          render={() => (
+            <MainPage
+              items={allItems}
+              setItems={setItems}
+              currentUser={currentUser}
+            />
+          )}
         />
         <Route
           path="/results"
@@ -58,8 +65,15 @@ const App = () => {
             <MainPage items={items} setItems={setItems} allItems={allItems} />
           )}
         />
-        <Route path="/login" exact component={LoginPage} />
-        <Route path="/:id" render={() => <ItemPage items={items} />} />
+        <Route
+          path="/login"
+          exact
+          render={() => <LoginPage setCurrentUser={setCurrentUser} />}
+        />
+        <Route
+          path="/:id"
+          render={() => <ItemPage items={items} currentUser={currentUser} />}
+        />
       </Switch>
       <Footer />
     </Router>

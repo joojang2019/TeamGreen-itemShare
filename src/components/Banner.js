@@ -17,7 +17,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-export default function Banner() {
+export default function Banner({ currentUser }) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -35,7 +35,11 @@ export default function Banner() {
               marginTop: "-30px"
             }}
           >
-            <Link to="/login">Login</Link>
+            {Object.entries(currentUser).length === 0 ? (
+              <Link to="/login">Login</Link>
+            ) : (
+              <p>{`Welcome ${currentUser.email}`}</p>
+            )}
           </Button>
         </Toolbar>
       </Box>
