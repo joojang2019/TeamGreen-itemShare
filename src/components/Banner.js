@@ -1,7 +1,7 @@
 import React from "react";
 import logo_item_share from "..//logo_item_share.png";
 import { makeStyles } from "@material-ui/core/styles";
-import Toolbar from "@material-ui/core/Toolbar";
+import { Button, Toolbar } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
 import Box from "@material-ui/core/Box";
@@ -19,7 +19,6 @@ const useStyles = makeStyles(() => ({
 
 export default function Banner() {
   const classes = useStyles();
-
   return (
     <div className={classes.root}>
       <Box boxShadow="2" height="75px">
@@ -29,6 +28,15 @@ export default function Banner() {
               <img src={logo_item_share} alt="" />
             </Link>
           </div>
+          <Button
+            style={{
+              position: "absolute",
+              right: "10%",
+              marginTop: "-30px"
+            }}
+          >
+            <Link to="/login">Login</Link>
+          </Button>
         </Toolbar>
       </Box>
     </div>
