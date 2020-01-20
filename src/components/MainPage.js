@@ -10,7 +10,8 @@ const MainPage = ({ items, setItems, allItems }) => {
   );
 
   if (searchQuery) {
-    const filteredItems = allItems.filter(item => {
+    const filteredItems = allItems.filter(entry => {
+      const item = entry[1];
       const type = item.type.toLowerCase();
       const nameWords = item.name.toLowerCase().split(" ");
       return (
