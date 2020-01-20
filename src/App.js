@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Banner from "./components/Banner";
 import MainPage from "./components/MainPage";
 import ItemPage from "./components/ItemPage";
+import LoginPage from "./components/LoginPage";
 import Footer from "./components/Footer";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -44,25 +45,24 @@ const App = () => {
 
   return (
     <Router>
-      <div>
-        <Banner />
-        <Switch>
-          <Route
-            path="/"
-            exact
-            render={() => <MainPage items={allItems} setItems={setItems} />}
-          />
-          <Route
-            path="/results"
-            exact
-            render={() => (
-              <MainPage items={items} setItems={setItems} allItems={allItems} />
-            )}
-          />
-          <Route path="/:id" render={() => <ItemPage items={items} />} />
-        </Switch>
-        <Footer />
-      </div>
+      <Banner />
+      <Switch>
+        <Route
+          path="/"
+          exact
+          render={() => <MainPage items={allItems} setItems={setItems} />}
+        />
+        <Route
+          path="/results"
+          exact
+          render={() => (
+            <MainPage items={items} setItems={setItems} allItems={allItems} />
+          )}
+        />
+        <Route path="/login" exact component={LoginPage} />
+        <Route path="/:id" render={() => <ItemPage items={items} />} />
+      </Switch>
+      <Footer />
     </Router>
   );
 };
