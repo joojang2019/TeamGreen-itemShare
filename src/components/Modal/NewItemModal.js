@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
 import { db } from "../../App";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   modal: {
@@ -29,7 +30,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const NewItemModal = ({ state }) => {
-  const { modalOpen, setModalOpen } = state;
+  const { modalOpen, setModalOpen, currentUser } = state;
   const [formData, setFormData] = useState({
     name: "",
     type: "",
@@ -61,7 +62,8 @@ const NewItemModal = ({ state }) => {
   const postNewItem = e => {
     e.preventDefault();
     const id = shortid.generate();
-    db.child(`items/${id}`).update({ ...formData, id });
+    const email = `${currentUser.email}@${currentUser.domain}`;
+    db.child(`items/${id}`).update({ ...formData, id, email });
     setModalOpen(false);
     alert(`Added ${formData}`);
   };
@@ -81,14 +83,21 @@ const NewItemModal = ({ state }) => {
           {createTextField("price", "Price Per Day")}
           {createTextField("img", "Image Link")}
           <Grid container justify="center">
-            <Button
-              type="submit"
-              className={classes.button}
-              variant="contained"
-              color="secondary"
-            >
-              Submit
-            </Button>
+            {Object.entries(currentUser).length === 0 ? (
+              <div>
+                <p>You should login to add new item</p>
+                <Link to="/login">Login</Link>
+              </div>
+            ) : (
+              <Button
+                type="submit"
+                className={classes.button}
+                variant="contained"
+                color="secondary"
+              >
+                Submit
+              </Button>
+            )}
           </Grid>
         </form>
       </div>

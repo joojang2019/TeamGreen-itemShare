@@ -4,7 +4,7 @@ import "firebase/auth";
 import { Input, Button, Select, MenuItem, Switch } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 
-const LoginPage = () => {
+const LoginPage = ({ setCurrentUser }) => {
   const [loginInfo, setLoginInfo] = useState({
     email: "",
     domain: "u.northwestern.edu",
@@ -25,6 +25,7 @@ const LoginPage = () => {
       .signInWithEmailAndPassword(`${email}@${domain}`, password)
       .then(() => history.push("/"))
       .catch(error => alert(error.message));
+    setCurrentUser(loginInfo);
   };
 
   const signUp = e => {

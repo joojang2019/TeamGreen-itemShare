@@ -13,26 +13,23 @@ const useStyles = makeStyles(theme => ({
   button: {
     marginRight: "1em"
   }
-  
 }));
 
-
-const ModalManager = () => {
+const ModalManager = ({ currentUser }) => {
   const classes = useStyles();
   const [modalOpen, setModalOpen] = useState(false);
   return (
     <Fragment>
-      <NewItemModal state={{ modalOpen, setModalOpen }} />
-      <Grid container
-          justify="flex-end"
-      >       
-          <Button className = {classes.button}
-            variant="contained"
-            onClick={() => setModalOpen(true)}
-          >
-        Add Item
-          </Button>
-        </Grid>
+      <NewItemModal state={{ modalOpen, setModalOpen, currentUser }} />
+      <Grid container justify="flex-end">
+        <Button
+          className={classes.button}
+          variant="contained"
+          onClick={() => setModalOpen(true)}
+        >
+          Add Item
+        </Button>
+      </Grid>
     </Fragment>
   );
 };

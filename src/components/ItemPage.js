@@ -35,7 +35,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-export default function ItemPage({ items }) {
+export default function ItemPage({ items, currentUser }) {
   const classes = useStyles();
   const { id } = useParams();
   if (Object.keys(items).length === 0) return null;
@@ -73,14 +73,25 @@ export default function ItemPage({ items }) {
             >
               Available Till: {item.availableTill}
             </Typography>
-            <Typography
-              variant="body1"
-              color="textPrimary"
-              component="p"
-              className={classes.typography}
-            >
-              Contact Information: {item.email}
-            </Typography>
+            {Object.entries(currentUser).length === 0 ? (
+              <Typography
+                variant="body1"
+                color="textPrimary"
+                component="p"
+                className={classes.typography}
+              >
+                You should login in to get more Info.
+              </Typography>
+            ) : (
+              <Typography
+                variant="body1"
+                color="textPrimary"
+                component="p"
+                className={classes.typography}
+              >
+                Contact Information: {item.email}
+              </Typography>
+            )}
           </CardContent>
         </Card>
       </Grid>
