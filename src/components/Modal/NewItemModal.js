@@ -1,6 +1,10 @@
 import React from "react";
 import { Modal, TextField, Divider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { Button } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
+
+
 
 // REVISION NEEDED-- NOT TESTED YET
 /* function writeNewPost(item) {
@@ -16,16 +20,24 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
+    display: 'flex',
+    padding: theme.spacing(1),
+    alignItems: 'center',
+    justifyContent: 'center',
+  
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
     position: "absolute",
-    width: 600,
+    // width: 600,
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3)
+  },
+
+  '@media only screen and (min-width: 1024px)': {
+    paper: {
+      width: 600
+    }
   }
 }));
 
@@ -65,12 +77,19 @@ const NewItemModal = ({ state }) => {
           {createTextField("availableTill", "Item Available Until")}
           {createTextField("price", "Price Per Day")}
           {createTextField("img", "Image Link")}
-          <button color="blue" type="submit">
+          <Grid container
+            justify="center"
+          > 
+            <Button className = {classes.button}
+              variant="contained" color="secondary"
+            >
             Submit
-          </button>
+            </Button>
+          </Grid>
         </form>
       </div>
     </Modal>
+    
   );
 };
 
