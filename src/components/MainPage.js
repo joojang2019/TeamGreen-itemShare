@@ -28,7 +28,7 @@ const MainPage = ({ items, setItems, allItems, currentUser }) => {
   return (
     <div>
       <ModalManager currentUser={currentUser} />
-      <Search />
+      <Search searchQuery={searchQuery} />
       <ItemList items={items} />
     </div>
   );
