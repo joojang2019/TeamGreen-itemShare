@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
 import { makeStyles } from "@material-ui/core/styles";
@@ -37,6 +37,9 @@ const Search = ({ searchQuery }) => {
   const [currTerm, setCurrTerm] = useState(searchQuery ? searchQuery : "");
   const history = useHistory();
   const searchTerm = `/results?search_query=${currTerm}`;
+  useEffect(() => {
+    setCurrTerm(searchQuery ? searchQuery : "");
+  }, [searchQuery]);
 
   const changeCurrTerm = e => {
     setCurrTerm(e.target.value);
