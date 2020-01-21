@@ -62,7 +62,12 @@ const App = () => {
           path="/results"
           exact
           render={() => (
-            <MainPage items={items} setItems={setItems} allItems={allItems} />
+            <MainPage
+              items={items}
+              setItems={setItems}
+              allItems={allItems}
+              currentUser={currentUser}
+            />
           )}
         />
         <Route
