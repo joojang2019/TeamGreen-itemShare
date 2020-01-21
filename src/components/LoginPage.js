@@ -23,9 +23,11 @@ const LoginPage = ({ setCurrentUser }) => {
     firebase
       .auth()
       .signInWithEmailAndPassword(`${email}@${domain}`, password)
-      .then(() => history.push("/"))
+      .then(() => {
+        setCurrentUser(loginInfo);
+        history.push("/");
+      })
       .catch(error => alert(error.message));
-    setCurrentUser(loginInfo);
   };
 
   const signUp = e => {
@@ -36,7 +38,8 @@ const LoginPage = ({ setCurrentUser }) => {
       .createUserWithEmailAndPassword(`${email}@${domain}`, password)
       .then(() => {
         alert("You successfully signed up!");
-        setFormType("Login");
+        setCurrentUser(loginInfo);
+        history.push("/");
       })
       .catch(error => alert(error.message));
   };
