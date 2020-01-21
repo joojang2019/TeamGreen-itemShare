@@ -35,6 +35,8 @@ const LoginPage = ({ setCurrentUser }) => {
       .auth()
       .createUserWithEmailAndPassword(`${email}@${domain}`, password)
       .catch(error => alert(error.message));
+    alert("You successfully signed up!");
+    setFormType("Login");
   };
 
   const handleFormChange = e => {

@@ -38,6 +38,7 @@ const NewItemModal = ({ state }) => {
     price: "",
     img: ""
   });
+
   const setFormField = (field, data) => {
     setFormData({ ...formData, [field]: data });
   };
@@ -65,7 +66,7 @@ const NewItemModal = ({ state }) => {
     const email = `${currentUser.email}@${currentUser.domain}`;
     db.child(`items/${id}`).update({ ...formData, id, email });
     setModalOpen(false);
-    alert(`Added ${formData}`);
+    alert(`Successfully Added!`);
   };
 
   return (
@@ -82,8 +83,9 @@ const NewItemModal = ({ state }) => {
           {createTextField("availableTill", "Item Available Until")}
           {createTextField("price", "Price Per Day")}
           {createTextField("img", "Image Link")}
+
           <Grid container justify="center">
-            {Object.entries(currentUser).length === 0 ? (
+            {currentUser && Object.entries(currentUser).length === 0 ? (
               <div>
                 <p>You should login to add new item</p>
                 <Link to="/login">Login</Link>
