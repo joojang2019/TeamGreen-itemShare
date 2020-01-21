@@ -34,9 +34,11 @@ const LoginPage = ({ setCurrentUser }) => {
     firebase
       .auth()
       .createUserWithEmailAndPassword(`${email}@${domain}`, password)
+      .then(() => {
+        alert("You successfully signed up!");
+        setFormType("Login");
+      })
       .catch(error => alert(error.message));
-    alert("You successfully signed up!");
-    setFormType("Login");
   };
 
   const handleFormChange = e => {
@@ -80,7 +82,7 @@ const LoginPage = ({ setCurrentUser }) => {
       <Button type="submit">{formType}</Button>
       <div>
         Login
-        <Switch onChange={handleFormChange} />
+        <Switch onChange={handleFormChange} checked={formType !== "Login"} />
         Signup
       </div>
     </form>
