@@ -32,9 +32,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Search() {
+const Search = ({ searchQuery }) => {
   const classes = useStyles();
-  const [currTerm, setCurrTerm] = useState("");
+  const [currTerm, setCurrTerm] = useState(searchQuery ? searchQuery : "");
   const history = useHistory();
   const searchTerm = `/results?search_query=${currTerm}`;
 
@@ -74,4 +74,6 @@ export default function Search() {
       </Grid>
     </div>
   );
-}
+};
+
+export default Search;
