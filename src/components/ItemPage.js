@@ -5,10 +5,9 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { Grid } from "@material-ui/core";
 import "../styles/ItemPage.scss";
-
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 export default function ItemPage({ items, currentUser }) {
   const { id } = useParams();
@@ -16,16 +15,23 @@ export default function ItemPage({ items, currentUser }) {
   const { state } = useLocation();
   const goBack = () =>
     state ? history.push(state.prevURL) : history.push("/");
+
   if (Object.keys(items).length === 0) return null;
   const item = items.find(([key]) => key === id)[1];
 
   return (
     <Grid container justify="center" className="page-container">
       <Grid item xs={12} sm={12} md={6} lg={6}>
-        <Button onClick={goBack} color="default" variant="contained" startIcon={<ArrowBackIcon />} className="back-button">
+        <Button
+          onClick={goBack}
+          color="default"
+          variant="contained"
+          startIcon={<ArrowBackIcon />}
+          className="back-button"
+        >
           Back
         </Button>
-        <Card className='product-card'>
+        <Card className="product-card">
           <Grid container justify="center">
             <CardMedia className="product-media" image={item.img} />
           </Grid>
@@ -52,33 +58,20 @@ export default function ItemPage({ items, currentUser }) {
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12}>
-                <Typography
-                  variant="body1"
-                  color="textPrimary"
-                  component="p"
-                >
+                <Typography variant="body1" color="textPrimary" component="p">
                   Available Till: {item.availableTill}
                 </Typography>
               </Grid>
               {Object.entries(currentUser).length === 0 ? (
                 <Grid item xs={12} sm={12} md={12} lg={12}>
-                  <Typography
-                    variant="body1"
-                    color="textPrimary"
-                    component="p"
-
-                  >
+                  <Typography variant="body1" color="textPrimary" component="p">
                     You should log in to get more Info.
                   </Typography>
                 </Grid>
               ) : (
                 <Grid item xs={12} sm={12} md={12} lg={12}>
-                  <Typography
-                    variant="body1"
-                    color="textPrimary"
-                    component="p"
-                  >
-                      Contact Information: {item.email}
+                  <Typography variant="body1" color="textPrimary" component="p">
+                    Contact Information: {item.email}
                   </Typography>
                 </Grid>
               )}
