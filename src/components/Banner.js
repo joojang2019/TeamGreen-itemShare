@@ -1,23 +1,55 @@
-import React from "react";
+import React, { Fragment } from "react";
 import logo_item_share from "..//logo_item_share.png";
 import { Button, Toolbar, AppBar } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import firebase from "firebase/app";
+import "../styles/Login.scss";
+import "firebase/auth";
 import "../styles/Banner.scss";
 
-export default function Banner({ currentUser }) {
+export default function Banner({ currentUser, setCurrentUser }) {
+  const handleLogOut = () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        alert("Successfully signed out.");
+      })
+      .catch(function(error) {
+        alert("Couldn't log out. Try again.");
+      });
+    setCurrentUser({});
+  };
+
   return (
-    <AppBar position="sticky" className='nav-bar'>
+    <AppBar position="sticky" className="nav-bar">
       <Toolbar>
         <Link to="/">
           <img src={logo_item_share} alt="" />
         </Link>
         <div>
           {Object.entries(currentUser).length === 0 ? (
-            <Button variant="contained" color="primary"
-              className="login-button">
-              <Link className='login-link' to="/login">Login</Link></Button>
+            <Button
+              variant="contained"
+              color="primary"
+              className="login-button"
+            >
+              <Link className="login-link" to="/login">
+                Login
+              </Link>
+            </Button>
           ) : (
-            <p>{currentUser.email}</p>
+            <Fragment>
+              {/* <p>{currentUser.email}</p> */}
+              <Button
+                variant="contained"
+                color="primary"
+                className="login-button"
+                onClick={handleLogOut}
+              >
+                Logout
+              </Button>
+            </Fragment>
           )}
         </div>
       </Toolbar>

@@ -51,7 +51,7 @@ const App = () => {
 
   return (
     <Router>
-      <Banner currentUser={currentUser} />
+      <Banner currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <Switch>
         <Route
           path="/"
