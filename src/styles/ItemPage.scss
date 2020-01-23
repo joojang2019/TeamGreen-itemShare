@@ -1,0 +1,33 @@
+$back-button: #0277bd;
+
+.page-container { 
+    margin-top: 2em;
+
+    .product-card {
+        margin-top: 5em;
+      }
+    
+      .product-media {
+        padding-top: 25%;
+        justify-content: center;
+        width: 20em;
+        height: 10em;
+        background-color:#eeeeee
+      }
+    
+      .card-content {
+        box-shadow: 0px -2px 16px -8px rgba(0,0,0,0.75);
+      }
+
+      .price-text {
+          float: right;
+      }
+
+      .back-button {
+          background-color: $back-button;
+          color: white;
+      }
+}
+
+
+

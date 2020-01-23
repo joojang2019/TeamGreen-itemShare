@@ -1,24 +1,12 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
-
-const useStyles = makeStyles(() => ({
-  root: {
-    background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
-    color: "white",
-    paddingTop: "10px",
-    marginTop: "calc(20% + 20px)",
-    bottom: 0,
-    height: 80
-  }
-}));
+import "../styles/Footer.scss";
 
 export default function Banner() {
-  const classes = useStyles();
 
   return (
-    <BottomNavigation className={classes.root}>
-      <p>itemShare. All rights reserved.</p>
+    <BottomNavigation className="footer">
+      <p>&copy;&nbsp;itemShare. All rights reserved.</p>
     </BottomNavigation>
   );
 }

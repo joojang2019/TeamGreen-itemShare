@@ -4,7 +4,13 @@ import MainPage from "./components/MainPage";
 import ItemPage from "./components/ItemPage";
 import LoginPage from "./components/LoginPage";
 import Footer from "./components/Footer";
+
+// css styling: clean up imports after webpack is built in
 import "./App.css";
+// import "./styles/Banner.scss";
+// import "./styles/ItemPage.scss";
+// import "./styles/Login.scss";
+// import "./styles/ModalManager.scss";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // Firebase

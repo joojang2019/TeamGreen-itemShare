@@ -3,27 +3,16 @@ import React, { Fragment, useState } from "react";
 import NewItemModal from "./NewItemModal";
 import { Button } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1
-  },
-
-  button: {
-    marginRight: "1em"
-  }
-}));
+import "../../styles/ModalManager.scss";
 
 const ModalManager = ({ currentUser }) => {
-  const classes = useStyles();
   const [modalOpen, setModalOpen] = useState(false);
   return (
     <Fragment>
       <NewItemModal state={{ modalOpen, setModalOpen, currentUser }} />
-      <Grid container justify="flex-end">
+      <Grid container justify="flex-end" className="add-button-container">
         <Button
-          className={classes.button}
+          className="add-button"
           variant="contained"
           onClick={() => setModalOpen(true)}
         >

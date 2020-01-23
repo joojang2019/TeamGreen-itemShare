@@ -1,0 +1,29 @@
+$navbar-color: #bdbdbd;
+$login-button-color: #0277bd;
+
+
+.nav-bar {
+   box-shadow: 2;
+   max-height: 5em !important; 
+   background-color: $navbar-color !important;
+   
+
+   .login-button {
+      position: absolute;
+      right: 5%;
+      margin: -1.5em 0 0 0 !important;
+      background-color: $login-button-color;
+   }
+
+   img {
+      max-width: 75%;
+      max-height: 75%;
+      padding-left: 1em;
+      margin: -1em 0 0 0;
+   }
+
+   .login-link {
+      text-decoration: none;
+      color: white;
+   }
+}
