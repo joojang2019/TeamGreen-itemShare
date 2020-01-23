@@ -71,7 +71,8 @@ export default function ItemPage({ items, currentUser }) {
               ) : (
                 <Grid item xs={12} sm={12} md={12} lg={12}>
                   <Typography variant="body1" color="textPrimary" component="p">
-                    Contact Information: {item.email}
+                    Contact Seller:
+                    <a href={`mailto:${item.email}`}>{item.email}</a>
                   </Typography>
                 </Grid>
               )}
