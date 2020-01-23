@@ -1,0 +1,40 @@
+$login-color: #0277bd;
+@mixin required-margin {
+    margin: 0.5em 0 0 0 !important;
+}
+
+.page-container {
+    padding: 0.5em;
+
+    .form {
+        padding-bottom: 0.5em;
+    }
+}
+
+.login-header {
+    background-color: $login-color;
+}
+
+.login-button{
+    background-color: $login-color !important;
+    @include required-margin;
+}
+
+.email {
+    .input {
+        width: 72% !important;
+        @include required-margin;
+    }
+
+    .select {
+        width: 70% !important;
+        @include required-margin;
+    }
+}
+
+.password {
+    .input {
+    @include required-margin;
+    width: 72%;
+    }
+}

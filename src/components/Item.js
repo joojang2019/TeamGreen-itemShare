@@ -1,40 +1,14 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import { Grid } from "@material-ui/core";
+import "../styles/Item.scss";
 
-const useStyles = makeStyles(() => ({
-  root: {
-    flexGrow: 1
-  },
-
-  card: {
-    marginTop: "5em",
-    padding: "0.5em"
-  },
-  media: {
-    paddingTop: "25%",
-    justifyContent: "center",
-    width: "20em",
-    height: "10em"
-  },
-  cardContent: {
-    background: "#455a64",
-    marginTop: "2em",
-    height: "5em"
-  },
-
-  typography: {
-    color: "white"
-  }
-}));
 export default function Item({ item }) {
   const { pathname, search } = useLocation();
-  const classes = useStyles();
   return (
     <Link
       to={{
@@ -42,18 +16,18 @@ export default function Item({ item }) {
         state: { prevURL: `${pathname}${search}` }
       }}
     >
-      <Grid container justify="center">
+      <Grid container justify="center" className="page-container">
         <Grid item xs={12} sm={12} md={6} lg={6}>
-          <Card className={classes.card}>
+          <Card className="product-card">
             <Grid container justify="center">
-              <CardMedia className={classes.media} image={item.img} />
+              <CardMedia className="product-media" image={item.img} />
             </Grid>
-            <CardContent className={classes.cardContent}>
+            <CardContent className="card-content">
               <Typography
                 gutterBottom
                 variant="h5"
                 component="h1"
-                className={classes.typography}
+                className="typography"
               >
                 {item.name}
               </Typography>
@@ -61,7 +35,7 @@ export default function Item({ item }) {
                 variant="body1"
                 color="textPrimary"
                 component="p"
-                className={classes.typography}
+                className="typography"
               >
                 Price: {item.price}
               </Typography>
@@ -69,7 +43,7 @@ export default function Item({ item }) {
                 variant="body1"
                 color="textPrimary"
                 component="p"
-                className={classes.typography}
+                className="typography"
               >
                 Available Till: {item.availableTill}
               </Typography>

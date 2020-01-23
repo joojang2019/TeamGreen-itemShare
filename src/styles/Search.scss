@@ -1,0 +1,22 @@
+.root {
+    padding: 2px 4px;
+    display: flex;
+    align-content: center;
+    width: 80%;
+    margin-bottom: 25px;
+  }
+  .input {
+    // margin-left: theme.spacing(1);
+    flex: 1
+  }
+  .iconButton {
+    padding: 10
+  }
+  .mytext {
+    font-size: 22px;
+  }
+  .searchbar {
+    display: block;
+    text-align: center;
+    padding:0.5em;
+  }
