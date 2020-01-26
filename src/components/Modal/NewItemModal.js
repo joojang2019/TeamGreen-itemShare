@@ -79,9 +79,9 @@ const NewItemModal = ({ state }) => {
         <form onSubmit={postNewItem}>
           <h1>List a New Item</h1>
           {createTextField("name", "Name of Item")}
-          {createTextField("type", "Type of Item")}
+          {createTextField("type", "Type of Item (eg. camera, bike)")}
           {createTextField("availableTill", "Item Available Until")}
-          {createTextField("price", "Price Per Day")}
+          {createTextField("price", "$/Day")}
           {createTextField("img", "Image Link")}
 
           <Grid container justify="center">

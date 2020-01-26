@@ -54,12 +54,12 @@ export default function ItemPage({ items, currentUser }) {
                   component="h3"
                   className="price-text"
                 >
-                  Price: {item.price}
+                  Price: ${item.price} /day
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <Typography variant="body1" color="textPrimary" component="p">
-                  Available Till: {item.availableTill}
+                  Available Until: {item.availableTill}
                 </Typography>
               </Grid>
               {Object.entries(currentUser).length === 0 ? (
