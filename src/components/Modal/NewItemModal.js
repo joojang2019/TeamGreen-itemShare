@@ -78,7 +78,7 @@ const NewItemModal = ({ state }) => {
       <div className={classes.paper} data-color="blue" data-backdrop="false">
         <form onSubmit={postNewItem}>
           <h1>List a New Item</h1>
-          {createTextField("name", "Name of Item")}
+          {createTextField("name", "Name of Item (eg. Canon Powershot SX5) ")}
           {createTextField("type", "Type of Item (eg. camera, bike)")}
           {createTextField("availableTill", "Item Available Until")}
           {createTextField("price", "$/Day")}
