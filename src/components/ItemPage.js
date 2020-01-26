@@ -24,7 +24,6 @@ export default function ItemPage({ items, currentUser }) {
       <Grid item xs={12} sm={12} md={6} lg={6}>
         <Button
           onClick={goBack}
-          color="default"
           variant="contained"
           startIcon={<ArrowBackIcon />}
           className="back-button"
@@ -50,11 +49,11 @@ export default function ItemPage({ items, currentUser }) {
               <Grid item xs={6} sm={6} md={6} lg={6}>
                 <Typography
                   color="textPrimary"
-                  variant="h5"
-                  component="h3"
+                  //variant="h6"
+                  //component="h6"
                   className="price-text"
                 >
-                  Price: ${item.price} /day
+                  ${item.price} /day
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12}>

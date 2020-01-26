@@ -6,35 +6,31 @@ $navbar-color: rgb(223, 236, 245);
 
   .product-card {
     margin-top: 5em;
-<<<<<<< HEAD
-=======
     justify-content: center;
     margin-right: 10%;
     margin-left: 10%;
->>>>>>> ee927ba636c697d8a9f03745e0f04031f8ba1e86
-  }
 
-  .product-media {
-    padding-top: 25%;
-    justify-content: center;
-    width: 20em;
-    height: 10em;
-    background-color: #eeeeee;
-  }
+    .product-media {
+      padding-top: 25%;
+      padding-bottom: 25%;
+      justify-content: center;
+      width: 20em;
+      height: 10em;
+      background-color: #eeeeee;
+    }
 
-  .card-content {
-<<<<<<< HEAD
-    background-color: rgb(223, 236, 245);
-=======
-    //box-shadow: 0px -2px 16px -8px rgba(0, 0, 0, 0.75);
-    background-color: $navbar-color;
-    height: 100%;
-    width: 100%;
->>>>>>> ee927ba636c697d8a9f03745e0f04031f8ba1e86
-  }
+    .card-content {
+      //box-shadow: 0px -2px 16px -8px rgba(0, 0, 0, 0.75);
+      background-color: $navbar-color;
+      height: 100%; // fixes cut off text
+    }
 
-  .price-text {
-    float: right;
+    .price-text {
+      float: right;
+      font-size: 2vmax;
+      //justify-content: right;
+      // margin-right: 0.5%;
+    }
   }
 
   .back-button {
