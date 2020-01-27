@@ -31,13 +31,14 @@ const useStyles = makeStyles(theme => ({
 
 const NewItemModal = ({ state }) => {
   const { modalOpen, setModalOpen, currentUser } = state;
-  const [formData, setFormData] = useState({
-    name: "",
+
+  const emptyInputForm = {
     type: "",
     availableTill: "",
     price: "",
     img: ""
-  });
+  };
+  const [formData, setFormData] = useState(emptyInputForm);
 
   const setFormField = (field, data) => {
     setFormData({ ...formData, [field]: data });
@@ -66,6 +67,7 @@ const NewItemModal = ({ state }) => {
     const email = `${currentUser.email}@${currentUser.domain}`;
     db.child(`items/${id}`).update({ ...formData, id, email });
     setModalOpen(false);
+    setFormData(emptyInputForm);
     alert(`Successfully Added!`);
   };
 
