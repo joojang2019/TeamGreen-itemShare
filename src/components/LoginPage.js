@@ -57,6 +57,7 @@ const LoginPage = ({ setCurrentUser }) => {
         setCurrentUser(loginInfo);
       })
       .catch(error => alert(error.message));
+    history.goBack();
   };
 
   const handleFormChange = e => {
