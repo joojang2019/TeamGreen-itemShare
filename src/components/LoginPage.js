@@ -26,7 +26,7 @@ const LoginPage = ({ setCurrentUser }) => {
   const history = useHistory();
   const { state } = useLocation();
 
-  const goBack = () =>
+  const goToBack = () =>
     state ? history.push(state.prevURL) : history.push("/");
 
   const setUserField = (field, data) => {
@@ -41,9 +41,9 @@ const LoginPage = ({ setCurrentUser }) => {
       .signInWithEmailAndPassword(`${email}@${domain}`, password)
       .then(() => {
         setCurrentUser(loginInfo);
-        history.push("/");
       })
       .catch(error => alert(error.message));
+    history.goBack();
   };
 
   const signUp = e => {
@@ -55,7 +55,6 @@ const LoginPage = ({ setCurrentUser }) => {
       .then(() => {
         alert("You successfully signed up!");
         setCurrentUser(loginInfo);
-        history.push("/");
       })
       .catch(error => alert(error.message));
   };
@@ -72,7 +71,7 @@ const LoginPage = ({ setCurrentUser }) => {
     <Grid container justify="center" className="page-container">
       <Grid item xs={12} sm={12} md={4} lg={4}>
         <Button
-          onClick={goBack}
+          onClick={goToBack}
           color="default"
           variant="contained"
           startIcon={<ArrowBackIcon />}
