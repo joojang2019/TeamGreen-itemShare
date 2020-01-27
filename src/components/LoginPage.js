@@ -41,9 +41,9 @@ const LoginPage = ({ setCurrentUser }) => {
       .signInWithEmailAndPassword(`${email}@${domain}`, password)
       .then(() => {
         setCurrentUser(loginInfo);
+        history.goBack();
       })
       .catch(error => alert(error.message));
-    history.goBack();
   };
 
   const signUp = e => {
@@ -55,9 +55,9 @@ const LoginPage = ({ setCurrentUser }) => {
       .then(() => {
         alert("You successfully signed up!");
         setCurrentUser(loginInfo);
+        history.goBack();
       })
       .catch(error => alert(error.message));
-    history.goBack();
   };
 
   const handleFormChange = e => {
