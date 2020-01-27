@@ -37,7 +37,7 @@ export default function Item({ item }) {
                 component="p"
                 className="typography"
               >
-                Price: {item.price}
+                Price: ${item.price} /day
               </Typography>
               <Typography
                 variant="body1"
@@ -45,7 +45,7 @@ export default function Item({ item }) {
                 component="p"
                 className="typography"
               >
-                Available Till: {item.availableTill}
+                Available Until: {item.availableTill}
               </Typography>
             </CardContent>
           </Card>
