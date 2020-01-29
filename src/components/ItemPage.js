@@ -18,7 +18,6 @@ export default function ItemPage({ allItems, currentUser }) {
     state ? history.push(state.prevURL) : history.push("/");
 
   if (Object.keys(allItems).length === 0) return null;
-  console.log(allItems);
   const item = allItems.find(([key]) => key === id)[1];
 
   return (

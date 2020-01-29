@@ -5,7 +5,7 @@ import { Modal, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
-import { db } from "../../App";
+import { db, storageRef } from "../../App";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
@@ -39,6 +39,7 @@ const NewItemModal = ({ state }) => {
     img: ""
   };
   const [formData, setFormData] = useState(emptyInputForm);
+  const [photo, setPhoto] = useState();
 
   const setFormField = (field, data) => {
     setFormData({ ...formData, [field]: data });
@@ -61,14 +62,31 @@ const NewItemModal = ({ state }) => {
 
   const classes = useStyles();
 
-  const postNewItem = e => {
+  const postNewItem = async e => {
     e.preventDefault();
+
+    // Create a reference to 'mountains.jpg'
+    const imageRef = storageRef.child(`images/${photo.name}`);
+    const snapshot = await imageRef.put(photo);
+    console.log(snapshot);
+    const downloadUrl = await snapshot.ref.getDownloadURL();
+    console.log(downloadUrl);
+
     const id = shortid.generate();
     const email = `${currentUser.email}@${currentUser.domain}`;
-    db.child(`items/${id}`).update({ ...formData, id, email });
+    db.child(`items/${id}`).update({
+      ...formData,
+      id,
+      email,
+      img: downloadUrl
+    });
     setModalOpen(false);
     setFormData(emptyInputForm);
     alert(`Successfully Added!`);
+  };
+
+  const managePhoto = e => {
+    setPhoto(e.target.files[0]);
   };
 
   return (
@@ -84,7 +102,8 @@ const NewItemModal = ({ state }) => {
           {createTextField("type", "Type of Item (eg. camera, bike)")}
           {createTextField("availableTill", "Item Available Until")}
           {createTextField("price", "$/Day")}
-          {createTextField("img", "Image Link")}
+          {/* {createTextField("img", "Image Link")} */}
+          <input type="file" accept="image/*" onChange={managePhoto} />
 
           <Grid container justify="center">
             {currentUser && Object.entries(currentUser).length === 0 ? (

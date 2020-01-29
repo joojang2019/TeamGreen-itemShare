@@ -16,6 +16,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // Firebase
 import firebase from "firebase/app";
 import "firebase/database";
+import "firebase/storage";
 
 // Firebase Config
 const firebaseConfig = {
@@ -30,6 +31,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database().ref();
+const storageRef = firebase.storage().ref();
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -95,4 +97,4 @@ const App = () => {
 };
 
 export default App;
-export { db };
+export { db, storageRef };
