@@ -59,6 +59,7 @@ const App = () => {
           render={() => (
             <MainPage
               items={allItems}
+              allItems={allItems}
               setItems={setItems}
               currentUser={currentUser}
             />
@@ -83,7 +84,9 @@ const App = () => {
         />
         <Route
           path="/:id"
-          render={() => <ItemPage items={items} currentUser={currentUser} />}
+          render={() => (
+            <ItemPage allItems={allItems} currentUser={currentUser} />
+          )}
         />
       </Switch>
       <Footer />
