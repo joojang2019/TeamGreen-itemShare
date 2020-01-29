@@ -9,15 +9,16 @@ import { Grid } from "@material-ui/core";
 import "../styles/ItemPage.scss";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
-export default function ItemPage({ items, currentUser }) {
+export default function ItemPage({ allItems, currentUser }) {
   const { id } = useParams();
   const history = useHistory();
   const { state } = useLocation();
+
   const goBack = () =>
     state ? history.push(state.prevURL) : history.push("/");
 
-  if (Object.keys(items).length === 0) return null;
-  const item = items.find(([key]) => key === id)[1];
+  if (Object.keys(allItems).length === 0) return null;
+  const item = allItems.find(([key]) => key === id)[1];
 
   return (
     <Grid container justify="center" className="page-container">
