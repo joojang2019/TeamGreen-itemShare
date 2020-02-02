@@ -5,19 +5,19 @@ import { useLocation } from "react-router-dom";
 import ModalManager from "./Modal/ModalManager";
 
 const MainPage = ({ items, setItems, allItems, currentUser }) => {
-  const searchQuery = new URLSearchParams(useLocation().search).get(
+  let searchQuery = new URLSearchParams(useLocation().search).get(
     "search_query"
   );
 
   if (searchQuery) {
+    searchQuery = searchQuery.toLowerCase();
     const filteredItems = allItems.filter(entry => {
       const item = entry[1];
-      const type = item.type.toLowerCase();
+      const typeWords = item.type.toLowerCase().split(" ");
       const nameWords = item.name.toLowerCase().split(" ");
       return (
-        type.startsWith(searchQuery.toLowerCase()) ||
-        nameWords.filter(word => word.startsWith(searchQuery.toLowerCase()))
-          .length
+        typeWords.filter(word => word.startsWith(searchQuery)).length ||
+        nameWords.filter(word => word.startsWith(searchQuery)).length
       );
     });
     if (JSON.stringify(items) !== JSON.stringify(filteredItems)) {
