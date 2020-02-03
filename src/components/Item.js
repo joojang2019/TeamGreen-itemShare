@@ -10,14 +10,13 @@ import "../styles/Item.scss";
 export default function Item({ item }) {
   const { pathname, search } = useLocation();
   return (
-    <Link
+    <Link style={{ textDecoration: 'none' }}
       to={{
         pathname: `/${item.id}`,
         state: { prevURL: `${pathname}${search}` }
       }}
     >
       <Grid container className="page-container">
-        {/* <Grid item xs={12} sm={12} md={3} lg={3}> */}
         <Card className="product-list-card ">
           <Grid container justify="center">
             <CardMedia className="product-media" image={item.img} />
@@ -27,7 +26,7 @@ export default function Item({ item }) {
               gutterBottom
               variant="h5"
               component="h1"
-              className="typography"
+              className="name-typography"
             >
               {item.name}
             </Typography>
@@ -50,7 +49,6 @@ export default function Item({ item }) {
           </CardContent>
         </Card>
       </Grid>
-      {/* </Grid> */}
     </Link>
   );
 }

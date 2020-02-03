@@ -123,9 +123,9 @@ const NewItemModal = ({ state }) => {
                 value={formData["price"]}
                 required
               />
-            </div>   
+            </div> 
+            <label className="week-label">$/week</label>  
           </div>
-          <label className="week-label">$/week</label>
           <DatePicker value={formData.availableTill} onChange={onDateChange} />
           <p>Add a photo of your item:</p>
           <input type="file" accept="image/*" onChange={onPhotoChange} />

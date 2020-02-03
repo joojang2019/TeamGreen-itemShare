@@ -7,7 +7,7 @@ import SearchIcon from "@material-ui/icons/Search";
 
 const ItemList = ({ items }) => {
   return items.length ? (
-    <Grid container spacing={3}>
+    <Grid container spacing={3} justify="center">
       {items.map(([id, item]) =>
         <Grid item key={id}> <Item item={item} /></Grid>)}</Grid>
   ) : (
