@@ -1,3 +1,5 @@
+
+
 .root {
     padding: 2px 4px;
     display: flex;
@@ -7,7 +9,8 @@
   }
   .input {
     // margin-left: theme.spacing(1);
-    flex: 1
+    flex: 1;
+    border-color: lightpink;
   }
   .iconButton {
     padding: 10
@@ -19,4 +22,40 @@
     display: block;
     text-align: center;
     padding:0.5em;
+    
+    
   }
+  .buttons  {
+    text-align:center;
+  }
+
+  .buttons Button {
+    justify-content:center;
+    align-content: center; 
+    margin:2%;    
+    border-radius: 50%;
+   
+  }
+  .buttons .camera {
+    background-color:lightpink;
+  }
+  .buttons .clothing {
+    background-color:lightgreen;
+  }
+
+  .buttons .bike {
+    background-color:paleturquoise;
+  }
+
+  .buttons .textbooks {
+    background-color:rgb(245, 245, 151);
+  }
+
+  .buttons Button img {
+    justify-content: center;
+    align-content: center;
+    width: 40px; 
+    height: 40px;
+
+  }
+  
