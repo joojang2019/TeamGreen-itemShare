@@ -16,7 +16,7 @@ const ModalManager = ({ currentUser }) => {
           variant="contained"
           onClick={() => setModalOpen(true)}
         >
-          List an Item
+          Post an Item
         </Button>
       </Grid>
     </Fragment>
