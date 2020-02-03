@@ -7,6 +7,7 @@ import { Button } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
 import { db, storageRef } from "../../App";
 import { Link } from "react-router-dom";
+import "../../styles/NewItemModal.scss";
 
 const useStyles = makeStyles(theme => ({
   modal: {
@@ -125,7 +126,7 @@ const NewItemModal = ({ state }) => {
               />
             </div>
 
-            <label>$/week</label>
+            <label className="week-label">$/week</label>
           </div>
           {/* {createTextField("img", "Image Link")} */}
           <p>Add a photo of your item:</p>
