@@ -1,4 +1,4 @@
-import React, { useContext, Fragment } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import logo_item_share from "..//logo_item_share.png";
 import { Button, Toolbar, AppBar } from "@material-ui/core";
@@ -30,44 +30,27 @@ const Banner = () => {
           <img src={logo_item_share} alt="" />
         </Link>
         <div>
-          {Object.entries(user).length === 0 ? (
+          {location.pathname === "/login" ? (
+            <div></div>
+          ) : Object.entries(user).length === 0 ? (
+            <Link to="/login">
+              <Button
+                variant="contained"
+                color="primary"
+                className="login-button login-link"
+              >
+                Login
+              </Button>
+            </Link>
+          ) : (
             <Button
               variant="contained"
               color="primary"
-              className="login-button"
+              className="login-button login-link"
+              onClick={handleLogOut}
             >
-              <Link className="login-link" to="/login">
-                Login
-              </Link>
+              Logout
             </Button>
-          {location.pathname === "/login" ? (
-            <div></div>
-          ) : (
-            [
-              Object.entries(currentUser).length === 0 ? (
-                <Button
-                  variant="contained"
-                  color="primary"
-                  className="login-button"
-                >
-                  <Link className="login-link" to="/login">
-                    Login
-                  </Link>
-                </Button>
-              ) : (
-                <Fragment>
-                  {/* <p>{currentUser.email}</p> */}
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    className="login-button"
-                    onClick={handleLogOut}
-                  >
-                    Logout
-                  </Button>
-                </Fragment>
-              )
-            ]
           )}
         </div>
       </Toolbar>
