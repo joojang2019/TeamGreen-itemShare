@@ -1,11 +1,10 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import DatePicker from "./DatePicker";
 import shortid from "shortid";
 import "firebase/database";
-import { Modal, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { Button } from "@material-ui/core";
-import { Grid } from "@material-ui/core";
+import { Button, Grid, Modal, TextField } from "@material-ui/core";
 import { db, storageRef } from "../../App";
 import { Link } from "react-router-dom";
 
@@ -36,7 +35,7 @@ const NewItemModal = ({ state }) => {
 
   const emptyInputForm = {
     type: "",
-    availableTill: "",
+    availableTill: new Date().toLocaleDateString(),
     price: "",
     img: ""
   };
@@ -82,7 +81,11 @@ const NewItemModal = ({ state }) => {
     alert(`Successfully Added!`);
   };
 
-  const managePhoto = e => {
+  const onDateChange = date => {
+    setFormField("availableTill", date.toLocaleDateString());
+  };
+
+  const onPhotoChange = e => {
     setPhoto(e.target.files[0]);
   };
 
@@ -97,11 +100,9 @@ const NewItemModal = ({ state }) => {
           <h1>List a New Item</h1>
           {createTextField("name", "Name of Item (eg. Canon Powershot SX5) ")}
           {createTextField("type", "Type of Item (eg. camera, bike)")}
-          {createTextField("availableTill", "Item Available Until")}
           {createTextField("price", "$/Day")}
-          {/* {createTextField("img", "Image Link")} */}
-          <input type="file" accept="image/*" onChange={managePhoto} />
-
+          <DatePicker value={formData.availableTill} onChange={onDateChange} />
+          <input type="file" accept="image/*" onChange={onPhotoChange} />
           <Grid container justify="center">
             {user && Object.entries(user).length === 0 ? (
               <div>
