@@ -73,9 +73,16 @@ const ItemPage = ({ allItems }) => {
               ) : (
                 <Grid item xs={12} sm={12} md={12} lg={12}>
                   <Typography variant="body1" color="textPrimary" component="p">
-                    Contact Seller:
-                    <a href={`mailto:${item.email}`}>{item.email}</a>
+                    Seller's email: {item.email}
                   </Typography>
+
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    href={`mailto:${item.email}`}
+                  >
+                    Email seller
+                  </Button>
                 </Grid>
               )}
             </Grid>
