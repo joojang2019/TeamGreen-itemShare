@@ -5,18 +5,18 @@ import { Button } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
 import "../../styles/ModalManager.scss";
 
-const ModalManager = ({ currentUser }) => {
+const ModalManager = () => {
   const [modalOpen, setModalOpen] = useState(false);
   return (
     <Fragment>
-      <NewItemModal state={{ modalOpen, setModalOpen, currentUser }} />
+      <NewItemModal state={{ modalOpen, setModalOpen }} />
       <Grid container justify="flex-end" className="add-button-container">
         <Button
           className="add-button"
           variant="contained"
           onClick={() => setModalOpen(true)}
         >
-          List an Item
+          Post an Item
         </Button>
       </Grid>
     </Fragment>

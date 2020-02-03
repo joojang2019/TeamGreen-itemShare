@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
+import DatePicker from "./DatePicker";
 import shortid from "shortid";
 import "firebase/database";
-import { Modal, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { Button } from "@material-ui/core";
-import { Grid } from "@material-ui/core";
+import { Button, Grid, Modal, TextField } from "@material-ui/core";
 import { db, storageRef } from "../../App";
 import { Link } from "react-router-dom";
+import "../../styles/NewItemModal.scss";
 
 const useStyles = makeStyles(theme => ({
   modal: {
@@ -26,15 +27,23 @@ const useStyles = makeStyles(theme => ({
     paper: {
       width: 600
     }
+  },
+  button: {
+    marginLeft: 75
+  },
+
+  divcontainer: {
+    display: "flex"
   }
 }));
 
 const NewItemModal = ({ state }) => {
-  const { modalOpen, setModalOpen, currentUser } = state;
+  const { modalOpen, setModalOpen } = state;
+  const { user } = useContext(UserContext);
 
   const emptyInputForm = {
     type: "",
-    availableTill: "",
+    availableTill: new Date().toLocaleDateString(),
     price: "",
     img: ""
   };
@@ -64,16 +73,11 @@ const NewItemModal = ({ state }) => {
 
   const postNewItem = async e => {
     e.preventDefault();
-
-    // Create a reference to 'mountains.jpg'
     const imageRef = storageRef.child(`images/${photo.name}`);
     const snapshot = await imageRef.put(photo);
-    console.log(snapshot);
     const downloadUrl = await snapshot.ref.getDownloadURL();
-    console.log(downloadUrl);
-
     const id = shortid.generate();
-    const email = `${currentUser.email}@${currentUser.domain}`;
+    const email = `${user.email}`;
     db.child(`items/${id}`).update({
       ...formData,
       id,
@@ -85,7 +89,11 @@ const NewItemModal = ({ state }) => {
     alert(`Successfully Added!`);
   };
 
-  const managePhoto = e => {
+  const onDateChange = date => {
+    setFormField("availableTill", date.toLocaleDateString());
+  };
+
+  const onPhotoChange = e => {
     setPhoto(e.target.files[0]);
   };
 
@@ -97,27 +105,46 @@ const NewItemModal = ({ state }) => {
     >
       <div className={classes.paper} data-color="blue" data-backdrop="false">
         <form onSubmit={postNewItem}>
-          <h1>List a New Item</h1>
+          <h1>Post an Item</h1>
           {createTextField("name", "Name of Item (eg. Canon Powershot SX5) ")}
           {createTextField("type", "Type of Item (eg. camera, bike)")}
-          {createTextField("availableTill", "Item Available Until")}
-          {createTextField("price", "$/Day")}
-          {/* {createTextField("img", "Image Link")} */}
-          <input type="file" accept="image/*" onChange={managePhoto} />
-
+          <div className={classes.divcontainer}>
+            {/*refactor for cleanliness*/}
+            <div>
+              <TextField
+                placeholder="Price"
+                width="80%"
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true
+                }}
+                variant="outlined"
+                onChange={e => setFormField("price", e.target.value)}
+                value={formData["price"]}
+                required
+              />
+            </div>   
+          </div>
+          <label className="week-label">$/week</label>
+          <DatePicker value={formData.availableTill} onChange={onDateChange} />
+          <p>Add a photo of your item:</p>
+          <input type="file" accept="image/*" onChange={onPhotoChange} />
           <Grid container justify="center">
-            {currentUser && Object.entries(currentUser).length === 0 ? (
+            {user && Object.entries(user).length === 0 ? (
               <div>
-                <p>You should login to add new item</p>
-                <Link to="/login">Login</Link>
+                <p>You should login to add a new item.</p>
+                <Link to="/login">
+                  <Button
+                    className={classes.button}
+                    variant="contained"
+                    color="primary"
+                  >
+                    Login
+                  </Button>
+                </Link>
               </div>
             ) : (
-              <Button
-                type="submit"
-                className={classes.button}
-                variant="contained"
-                color="secondary"
-              >
+              <Button type="submit" variant="contained" color="primary">
                 Submit
               </Button>
             )}

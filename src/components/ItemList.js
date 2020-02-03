@@ -1,9 +1,9 @@
 import React from "react";
 import Item from "./Item";
 import { Grid } from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/Search";
 // import "../styles/ItemPage.scss";
 import "../styles/ItemList.scss";
+import SearchIcon from "@material-ui/icons/Search";
 
 const ItemList = ({ items }) => {
   return items.length ? (
@@ -25,6 +25,7 @@ const ItemList = ({ items }) => {
       <div>
           We couldn't find the item you're looking for. Please try searching a
           different item!
+
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import MainPage from "./components/MainPage";
 import ItemPage from "./components/ItemPage";
 import LoginPage from "./components/LoginPage";
 import Footer from "./components/Footer";
+import UserProvider from "./contexts/UserContext";
 
 // css styling: clean up imports after webpack is built in
 import "./App.css";
@@ -36,7 +37,6 @@ const storageRef = firebase.storage().ref();
 const App = () => {
   const [items, setItems] = useState([]);
   const [allItems, setAllItems] = useState([]);
-  const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
     const handleData = snap => {
@@ -52,47 +52,34 @@ const App = () => {
   }, []);
 
   return (
-    <Router>
-      <Banner currentUser={currentUser} setCurrentUser={setCurrentUser} />
-      <Switch>
-        <Route
-          path="/"
-          exact
-          render={() => (
-            <MainPage
-              items={allItems}
-              allItems={allItems}
-              setItems={setItems}
-              currentUser={currentUser}
-            />
-          )}
-        />
-        <Route
-          path="/results"
-          exact
-          render={() => (
-            <MainPage
-              items={items}
-              setItems={setItems}
-              allItems={allItems}
-              currentUser={currentUser}
-            />
-          )}
-        />
-        <Route
-          path="/login"
-          exact
-          render={() => <LoginPage setCurrentUser={setCurrentUser} />}
-        />
-        <Route
-          path="/:id"
-          render={() => (
-            <ItemPage allItems={allItems} currentUser={currentUser} />
-          )}
-        />
-      </Switch>
-      <Footer />
-    </Router>
+    <UserProvider>
+      <Router>
+        <Banner />
+        <Switch>
+          <Route
+            path="/"
+            exact
+            render={() => (
+              <MainPage
+                items={allItems}
+                allItems={allItems}
+                setItems={setItems}
+              />
+            )}
+          />
+          <Route
+            path="/results"
+            exact
+            render={() => (
+              <MainPage items={items} setItems={setItems} allItems={allItems} />
+            )}
+          />
+          <Route path="/login" exact render={() => <LoginPage />} />
+          <Route path="/:id" render={() => <ItemPage allItems={allItems} />} />
+        </Switch>
+        <Footer />
+      </Router>
+    </UserProvider>
   );
 };
 

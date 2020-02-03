@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 import { useParams, useHistory, useLocation } from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -9,7 +10,8 @@ import { Grid } from "@material-ui/core";
 import "../styles/ItemPage.scss";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
-export default function ItemPage({ allItems, currentUser }) {
+const ItemPage = ({ allItems }) => {
+  const { user } = useContext(UserContext);
   const { id } = useParams();
   const history = useHistory();
   const { state } = useLocation();
@@ -62,18 +64,25 @@ export default function ItemPage({ allItems, currentUser }) {
                   Available Until: {item.availableTill}
                 </Typography>
               </Grid>
-              {Object.entries(currentUser).length === 0 ? (
+              {Object.entries(user).length === 0 ? (
                 <Grid item xs={12} sm={12} md={12} lg={12}>
                   <Typography variant="body1" color="textPrimary" component="p">
-                    You should log in to get more Info.
+                    You should log in to get more info.
                   </Typography>
                 </Grid>
               ) : (
                 <Grid item xs={12} sm={12} md={12} lg={12}>
                   <Typography variant="body1" color="textPrimary" component="p">
-                    Contact Seller:
-                    <a href={`mailto:${item.email}`}>{item.email}</a>
+                    Seller's email: {item.email}
                   </Typography>
+
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    href={`mailto:${item.email}`}
+                  >
+                    Email seller
+                  </Button>
                 </Grid>
               )}
             </Grid>
@@ -82,4 +91,6 @@ export default function ItemPage({ allItems, currentUser }) {
       </Grid>
     </Grid>
   );
-}
+};
+
+export default ItemPage;

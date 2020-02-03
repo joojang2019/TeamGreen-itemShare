@@ -1,13 +1,16 @@
-import React, { Fragment } from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 import logo_item_share from "..//logo_item_share.png";
 import { Button, Toolbar, AppBar } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import firebase from "firebase/app";
 import "../styles/Login.scss";
 import "firebase/auth";
 import "../styles/Banner.scss";
 
-export default function Banner({ currentUser, setCurrentUser }) {
+const Banner = () => {
+  const { user } = useContext(UserContext);
+  const location = useLocation();
   const handleLogOut = () => {
     firebase
       .auth()
@@ -15,10 +18,9 @@ export default function Banner({ currentUser, setCurrentUser }) {
       .then(() => {
         alert("Successfully signed out.");
       })
-      .catch(function(error) {
+      .catch(() => {
         alert("Couldn't log out. Try again.");
       });
-    setCurrentUser({});
   };
 
   return (
@@ -28,31 +30,32 @@ export default function Banner({ currentUser, setCurrentUser }) {
           <img src={logo_item_share} alt="" />
         </Link>
         <div>
-          {Object.entries(currentUser).length === 0 ? (
-            <Button
-              variant="contained"
-              color="primary"
-              className="login-button"
-            >
-              <Link className="login-link" to="/login">
-                Login
-              </Link>
-            </Button>
-          ) : (
-            <Fragment>
-              {/* <p>{currentUser.email}</p> */}
+          {location.pathname === "/login" ? (
+            <div></div>
+          ) : Object.entries(user).length === 0 ? (
+            <Link to="/login">
               <Button
                 variant="contained"
                 color="primary"
-                className="login-button"
-                onClick={handleLogOut}
+                className="login-button login-link"
               >
-                Logout
+                Login
               </Button>
-            </Fragment>
+            </Link>
+          ) : (
+            <Button
+              variant="contained"
+              color="primary"
+              className="login-button login-link"
+              onClick={handleLogOut}
+            >
+              Logout
+            </Button>
           )}
         </div>
       </Toolbar>
     </AppBar>
   );
-}
+};
+
+export default Banner;
