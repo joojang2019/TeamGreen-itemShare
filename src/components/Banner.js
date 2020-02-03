@@ -1,4 +1,5 @@
-import React, { Fragment } from "react";
+import React, { useContext, Fragment } from "react";
+import { UserContext } from "../contexts/UserContext";
 import logo_item_share from "..//logo_item_share.png";
 import { Button, Toolbar, AppBar } from "@material-ui/core";
 import { Link } from "react-router-dom";
@@ -7,7 +8,8 @@ import "../styles/Login.scss";
 import "firebase/auth";
 import "../styles/Banner.scss";
 
-export default function Banner({ currentUser, setCurrentUser }) {
+const Banner = () => {
+  const { user } = useContext(UserContext);
   const handleLogOut = () => {
     firebase
       .auth()
@@ -15,10 +17,9 @@ export default function Banner({ currentUser, setCurrentUser }) {
       .then(() => {
         alert("Successfully signed out.");
       })
-      .catch(function(error) {
+      .catch(() => {
         alert("Couldn't log out. Try again.");
       });
-    setCurrentUser({});
   };
 
   return (
@@ -28,7 +29,7 @@ export default function Banner({ currentUser, setCurrentUser }) {
           <img src={logo_item_share} alt="" />
         </Link>
         <div>
-          {Object.entries(currentUser).length === 0 ? (
+          {Object.entries(user).length === 0 ? (
             <Button
               variant="contained"
               color="primary"
@@ -55,4 +56,6 @@ export default function Banner({ currentUser, setCurrentUser }) {
       </Toolbar>
     </AppBar>
   );
-}
+};
+
+export default Banner;

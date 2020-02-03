@@ -4,7 +4,7 @@ import Search from "./Search";
 import { useLocation } from "react-router-dom";
 import ModalManager from "./Modal/ModalManager";
 
-const MainPage = ({ items, setItems, allItems, currentUser }) => {
+const MainPage = ({ items, setItems, allItems }) => {
   let searchQuery = new URLSearchParams(useLocation().search).get(
     "search_query"
   );
@@ -27,7 +27,7 @@ const MainPage = ({ items, setItems, allItems, currentUser }) => {
 
   return (
     <div>
-      <ModalManager currentUser={currentUser} />
+      <ModalManager />
       <Search searchQuery={searchQuery} />
       <ItemList items={items} />
     </div>

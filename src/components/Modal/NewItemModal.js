@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 import shortid from "shortid";
 import "firebase/database";
 import { Modal, TextField } from "@material-ui/core";
@@ -30,7 +31,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const NewItemModal = ({ state }) => {
-  const { modalOpen, setModalOpen, currentUser } = state;
+  const { modalOpen, setModalOpen } = state;
+  const { user } = useContext(UserContext);
 
   const emptyInputForm = {
     type: "",
@@ -64,16 +66,11 @@ const NewItemModal = ({ state }) => {
 
   const postNewItem = async e => {
     e.preventDefault();
-
-    // Create a reference to 'mountains.jpg'
     const imageRef = storageRef.child(`images/${photo.name}`);
     const snapshot = await imageRef.put(photo);
-    console.log(snapshot);
     const downloadUrl = await snapshot.ref.getDownloadURL();
-    console.log(downloadUrl);
-
     const id = shortid.generate();
-    const email = `${currentUser.email}@${currentUser.domain}`;
+    const email = `${user.email}@${user.domain}`;
     db.child(`items/${id}`).update({
       ...formData,
       id,
@@ -106,7 +103,7 @@ const NewItemModal = ({ state }) => {
           <input type="file" accept="image/*" onChange={managePhoto} />
 
           <Grid container justify="center">
-            {currentUser && Object.entries(currentUser).length === 0 ? (
+            {user && Object.entries(user).length === 0 ? (
               <div>
                 <p>You should login to add new item</p>
                 <Link to="/login">Login</Link>

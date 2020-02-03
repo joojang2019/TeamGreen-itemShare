@@ -15,7 +15,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import "../styles/Login.scss";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
-const LoginPage = ({ setCurrentUser }) => {
+const LoginPage = () => {
   const [loginInfo, setLoginInfo] = useState({
     email: "",
     domain: "u.northwestern.edu",
@@ -26,7 +26,7 @@ const LoginPage = ({ setCurrentUser }) => {
   const history = useHistory();
   const { state } = useLocation();
 
-  const goToBack = () =>
+  const goBack = () =>
     state ? history.push(state.prevURL) : history.push("/");
 
   const setUserField = (field, data) => {
@@ -40,8 +40,8 @@ const LoginPage = ({ setCurrentUser }) => {
       .auth()
       .signInWithEmailAndPassword(`${email}@${domain}`, password)
       .then(() => {
-        setCurrentUser(loginInfo);
-        history.goBack();
+        alert("Lgged in successfully.");
+        goBack();
       })
       .catch(error => alert(error.message));
   };
@@ -54,8 +54,7 @@ const LoginPage = ({ setCurrentUser }) => {
       .createUserWithEmailAndPassword(`${email}@${domain}`, password)
       .then(() => {
         alert("You successfully signed up!");
-        setCurrentUser(loginInfo);
-        history.goBack();
+        goBack();
       })
       .catch(error => alert(error.message));
   };
@@ -72,7 +71,7 @@ const LoginPage = ({ setCurrentUser }) => {
     <Grid container justify="center" className="page-container">
       <Grid item xs={12} sm={12} md={4} lg={4}>
         <Button
-          onClick={goToBack}
+          onClick={goBack}
           color="default"
           variant="contained"
           startIcon={<ArrowBackIcon />}
