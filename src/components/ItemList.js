@@ -15,7 +15,7 @@ const ItemList = ({ items }) => {
       }}
     >
       <div>
-        <SearchIcon style={{ fontSize: "200", color: "coral" }}></SearchIcon>
+        <SearchIcon style={{ fontSize: "125", color: "coral" }}></SearchIcon>
       </div>
       <div>
         We couldn't find the item you're looking for. Please try searching a
