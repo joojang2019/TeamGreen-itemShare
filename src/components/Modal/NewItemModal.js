@@ -7,6 +7,7 @@ import { Button } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
 import { db, storageRef } from "../../App";
 import { Link } from "react-router-dom";
+import "../../styles/NewItemModal.scss";
 
 const useStyles = makeStyles(theme => ({
   modal: {
@@ -26,6 +27,13 @@ const useStyles = makeStyles(theme => ({
     paper: {
       width: 600
     }
+  },
+  button: {
+    marginLeft: 75
+  },
+
+  divcontainer: {
+    display: "flex"
   }
 }));
 
@@ -101,23 +109,45 @@ const NewItemModal = ({ state }) => {
           {createTextField("name", "Name of Item (eg. Canon Powershot SX5) ")}
           {createTextField("type", "Type of Item (eg. camera, bike)")}
           {createTextField("availableTill", "Item Available Until")}
-          {createTextField("price", "$/Day")}
+
+          <div className={classes.divcontainer}>
+            <div>
+              <TextField
+                placeholder="Price"
+                width="80%"
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true
+                }}
+                variant="outlined"
+                onChange={e => setFormField("price", e.target.value)}
+                value={formData["price"]}
+                required
+              />
+            </div>
+
+            <label className="week-label">$/week</label>
+          </div>
           {/* {createTextField("img", "Image Link")} */}
+          <p>Add a photo of your item:</p>
           <input type="file" accept="image/*" onChange={managePhoto} />
 
           <Grid container justify="center">
             {currentUser && Object.entries(currentUser).length === 0 ? (
               <div>
-                <p>You should login to add new item</p>
-                <Link to="/login">Login</Link>
+                <p>You should login to add a new item.</p>
+                <Link to="/login">
+                  <Button
+                    className={classes.button}
+                    variant="contained"
+                    color="primary"
+                  >
+                    Login
+                  </Button>
+                </Link>
               </div>
             ) : (
-              <Button
-                type="submit"
-                className={classes.button}
-                variant="contained"
-                color="secondary"
-              >
+              <Button type="submit" variant="contained" color="primary">
                 Submit
               </Button>
             )}
