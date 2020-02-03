@@ -12,14 +12,11 @@ import clothing_icon from "..//clothingicon.png";
 import bike_icon from"..//bike.png";
 import textbook_icon from "..//book.png";
 import camera_icon from "..//camera.png";
-import {Redirect} from "react-router-dom";
-
 
 const Search = ({ searchQuery }) => {
   const [currTerm, setCurrTerm] = useState(searchQuery ? searchQuery : "");
   const history = useHistory();
   const searchTerm = `/results?search_query=${currTerm}`;
-  const [redirect,setRedirect] = useState(false);
   useEffect(() => {
     setCurrTerm(searchQuery ? searchQuery : "");
   }, [searchQuery]);
