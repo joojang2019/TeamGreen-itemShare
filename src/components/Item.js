@@ -16,41 +16,41 @@ export default function Item({ item }) {
         state: { prevURL: `${pathname}${search}` }
       }}
     >
-      <Grid container justify="center" className="page-container">
-        <Grid item xs={12} sm={12} md={6} lg={6}>
-          <Card className="product-card">
-            <Grid container justify="center">
-              <CardMedia className="product-media" image={item.img} />
-            </Grid>
-            <CardContent className="card-content">
-              <Typography
-                gutterBottom
-                variant="h5"
-                component="h1"
-                className="typography"
-              >
-                {item.name}
-              </Typography>
-              <Typography
-                variant="body1"
-                color="textPrimary"
-                component="p"
-                className="typography"
-              >
-                Price: ${item.price} /day
-              </Typography>
-              <Typography
-                variant="body1"
-                color="textPrimary"
-                component="p"
-                className="typography"
-              >
-                Available Until: {item.availableTill}
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
+      <Grid container className="page-container">
+        {/* <Grid item xs={12} sm={12} md={3} lg={3}> */}
+        <Card className="product-list-card ">
+          <Grid container justify="center">
+            <CardMedia className="product-media" image={item.img} />
+          </Grid>
+          <CardContent className="card-content">
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="h1"
+              className="typography"
+            >
+              {item.name}
+            </Typography>
+            <Typography
+              variant="body1"
+              color="textPrimary"
+              component="p"
+              className="typography"
+            >
+              Price: ${item.price} /day
+            </Typography>
+            <Typography
+              variant="body1"
+              color="textPrimary"
+              component="p"
+              className="typography"
+            >
+              Available Until: {item.availableTill}
+            </Typography>
+          </CardContent>
+        </Card>
       </Grid>
+      {/* </Grid> */}
     </Link>
   );
 }
