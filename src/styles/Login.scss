@@ -17,7 +17,12 @@ $login-color: #0277bd;
 }
 
 .login-button {
-  background-color: $login-color !important;
+  background-color: white !important;
+  border-radius: 25px !important;
+  border-color: #0277bd !important;
+  border-style: solid !important;
+  border-width: medium !important;
+  color: #0277bd !important;
   @include required-margin;
 }
 
@@ -38,4 +43,13 @@ $login-color: #0277bd;
     @include required-margin;
     width: 72%;
   }
+}
+
+.back-button {
+  background-color: white !important;
+  border-radius: 25px !important;
+  border-color: #0277bd !important;
+  border-style: solid !important;
+  border-width: medium !important;
+  color: #0277bd !important;
 }

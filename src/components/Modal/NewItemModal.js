@@ -123,13 +123,13 @@ const NewItemModal = ({ state }) => {
                 value={formData["price"]}
                 required
               />
-            </div>   
+            </div>
           </div>
           <label className="week-label">$/week</label>
           <DatePicker value={formData.availableTill} onChange={onDateChange} />
           <p>Add a photo of your item:</p>
           <input type="file" accept="image/*" onChange={onPhotoChange} />
-          <Grid container justify="center">
+          <Grid container justify="center" className="outer-div">
             {user && Object.entries(user).length === 0 ? (
               <div>
                 <p>You should login to add a new item.</p>
@@ -144,7 +144,12 @@ const NewItemModal = ({ state }) => {
                 </Link>
               </div>
             ) : (
-              <Button type="submit" variant="contained" color="primary">
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                className="modal-button-submit"
+              >
                 Submit
               </Button>
             )}
