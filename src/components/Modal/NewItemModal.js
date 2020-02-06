@@ -8,6 +8,8 @@ import { Button, Grid, Modal, TextField } from "@material-ui/core";
 import { db, storageRef } from "../../App";
 import { Link } from "react-router-dom";
 import "../../styles/NewItemModal.scss";
+import MenuItem from "@material-ui/core/MenuItem";
+import Menu from "@material-ui/core/Menu";
 
 const useStyles = makeStyles(theme => ({
   modal: {
@@ -107,13 +109,25 @@ const NewItemModal = ({ state }) => {
         <form onSubmit={postNewItem}>
           <h1>Post an Item</h1>
           {createTextField("name", "Name of Item (eg. Canon Powershot SX5) ")}
-          {createTextField("type", "Type of Item (eg. camera, bike)")}
+          <div>
+            <TextField
+              select
+              onChange={e => setFormField("type", e.target.value)}
+              required
+              placeholder="Type of Item"
+              width="80%"
+              margin="normal"
+            >
+              <MenuItem>Clothing</MenuItem>
+              <MenuItem>Camera</MenuItem>
+              <MenuItem>School Supplies</MenuItem>
+            </TextField>
+          </div>
           <div className={classes.divcontainer}>
             {/*refactor for cleanliness*/}
             <div>
               <TextField
                 placeholder="Price"
-                width="80%"
                 margin="normal"
                 InputLabelProps={{
                   shrink: true
@@ -135,9 +149,10 @@ const NewItemModal = ({ state }) => {
                 <p>You should login to add a new item.</p>
                 <Link to="/login">
                   <Button
-                    className={classes.button}
+                    className="modal-login-button"
                     variant="contained"
                     color="primary"
+                    justify="center"
                   >
                     Login
                   </Button>
