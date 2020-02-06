@@ -9,7 +9,8 @@ import { db, storageRef } from "../../App";
 import { Link } from "react-router-dom";
 import "../../styles/NewItemModal.scss";
 import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
+import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
 
 const useStyles = makeStyles(theme => ({
   modal: {
@@ -111,16 +112,20 @@ const NewItemModal = ({ state }) => {
           {createTextField("name", "Name of Item (eg. Canon Powershot SX5) ")}
           <div>
             <TextField
+              id="standard-basic"
+              label="Category of Item"
               select
               onChange={e => setFormField("type", e.target.value)}
-              required
-              placeholder="Type of Item"
-              width="80%"
+              fullWidth
               margin="normal"
+              variant="outlined"
             >
-              <MenuItem>Clothing</MenuItem>
-              <MenuItem>Camera</MenuItem>
-              <MenuItem>School Supplies</MenuItem>
+              <MenuItem value={"clothing"}>Clothing</MenuItem>
+              <MenuItem value={"camera"}>Camera</MenuItem>
+              <MenuItem value={"school_supplies"}>School Supplies</MenuItem>
+              <MenuItem value={"bike"}>Bike</MenuItem>
+              <MenuItem value={"book"}>Textbook</MenuItem>
+              <MenuItem value={"other"}>Other</MenuItem>
             </TextField>
           </div>
           <div className={classes.divcontainer}>
