@@ -141,8 +141,8 @@ const NewItemModal = ({ state }) => {
                 required
               />
             </div>
+            <label className="week-label">$/week</label>
           </div>
-          <label className="week-label">$/week</label>
           <DatePicker value={formData.availableTill} onChange={onDateChange} />
           <p>Add a photo of your item:</p>
           <input

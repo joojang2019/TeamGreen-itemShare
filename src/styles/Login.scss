@@ -6,8 +6,17 @@ $login-color: #0277bd;
 .page-container {
   padding: 0.5em;
 
+  .login-card {
+    margin: 2em 0 0 0 !important;
+  }
+
   .form {
     padding-bottom: 0.5em;
+    color: #0277bd;
+    // border-radius: 25px;
+    border-color: #0277bd;
+    border-style: solid;
+    border-width: medium;
   }
 }
 
@@ -24,24 +33,29 @@ $login-color: #0277bd;
   border-width: medium !important;
   color: #0277bd !important;
   @include required-margin;
-}
 
-.email {
-  .input {
-    width: 72% !important;
+  .login-button {
+    background-color: $login-color !important;
     @include required-margin;
   }
 
-  .select {
-    width: 70% !important;
-    @include required-margin;
-  }
-}
+  .email {
+    .input {
+      width: 72% !important;
+      @include required-margin;
+    }
 
-.password {
-  .input {
-    @include required-margin;
-    width: 72%;
+    .select {
+      width: 70% !important;
+      @include required-margin;
+    }
+  }
+
+  .password {
+    .input {
+      @include required-margin;
+      width: 72%;
+    }
   }
 }
 

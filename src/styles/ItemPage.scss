@@ -21,7 +21,9 @@ $navbar-color: rgb(223, 236, 245);
 
     .card-content {
       //box-shadow: 0px -2px 16px -8px rgba(0, 0, 0, 0.75);
-      background-color: $navbar-color;
+      // background-color: $navbar-color;
+      box-shadow: 0px -2px 10px -8px rgba(0,0,0,0.75);
+
       height: 100%; // fixes cut off text
     }
 
