@@ -1,61 +1,57 @@
-
-
 .root {
-    padding: 2px 4px;
-    display: flex;
-    align-content: center;
-    width: 80%;
-    margin-bottom: 25px;
-  }
-  .input {
-    // margin-left: theme.spacing(1);
-    flex: 1;
-    border-color: lightpink;
-  }
-  .iconButton {
-    padding: 10
-  }
-  .mytext {
-    font-size: 22px;
-  }
-  .searchbar {
-    display: block;
-    text-align: center;
-    padding:0.5em;
-    
-    
-  }
-  .buttons  {
-    text-align:center;
-  }
+  padding: 2px 4px;
+  display: flex;
+  align-content: center;
+  width: 80%;
+  margin-bottom: 25px;
+}
+.input {
+  // margin-left: theme.spacing(1);
+  flex: 1;
+  border-color: lightpink;
+}
+.iconButton {
+  padding: 10;
+}
+.mytext {
+  font-size: 22px;
+}
+.searchbar {
+  display: block;
+  text-align: center;
+  padding: 0.5em;
+}
+.buttons {
+  text-align: center;
+}
 
-  .buttons Button {
-    justify-content:center;
-    align-content: center; 
-    margin:2%;    
-    border-radius: 50%;
-   
-  }
-  .buttons .camera {
-    background-color:lightpink;
-  }
-  .buttons .clothing {
-    background-color:lightgreen;
-  }
+.buttons button {
+  justify-content: center;
+  align-content: center;
+  margin: 2%;
+  border-radius: 50%;
+}
+.buttons .camera {
+  background-color: lightpink;
+}
+.buttons .clothing {
+  background-color: lightgreen;
+}
 
-  .buttons .bike {
-    background-color:paleturquoise;
-  }
+.buttons .bike {
+  background-color: paleturquoise;
+}
 
-  .buttons .textbooks {
-    background-color:rgb(245, 245, 151);
-  }
+.buttons .textbooks {
+  background-color: rgb(245, 245, 151);
+}
+.buttons .school-supplies {
+  background-color: rgb(151, 231, 245);
+}
 
-  .buttons Button img {
-    justify-content: center;
-    align-content: center;
-    width: 40px; 
-    height: 40px;
-
-  }
-  
+.buttons button img {
+  justify-content: center;
+  align-content: center;
+  width: 40px;
+  height: 40px;
+}

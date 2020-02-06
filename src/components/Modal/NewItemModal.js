@@ -9,8 +9,6 @@ import { db, storageRef } from "../../App";
 import { Link } from "react-router-dom";
 import "../../styles/NewItemModal.scss";
 import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
 
 const useStyles = makeStyles(theme => ({
   modal: {
@@ -147,7 +145,15 @@ const NewItemModal = ({ state }) => {
           <label className="week-label">$/week</label>
           <DatePicker value={formData.availableTill} onChange={onDateChange} />
           <p>Add a photo of your item:</p>
-          <input type="file" accept="image/*" onChange={onPhotoChange} />
+          <input
+            fullWidth
+            margin="normal"
+            variant="outlined"
+            type="file"
+            className="input-button"
+            accept="image/*"
+            onChange={onPhotoChange}
+          />
           <Grid container justify="center" className="outer-div">
             {user && Object.entries(user).length === 0 ? (
               <div>
