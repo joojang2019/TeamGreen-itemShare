@@ -10,12 +10,11 @@ $login-button-color: #0277bd;
     position: absolute;
     right: 3%;
     margin: -1.5em 0 0 0 !important;
-    background-color:white !important;
+    background-color: white !important;
     border-radius: 25px;
     border-color: #0277bd;
     border-style: solid;
     border-width: medium;
-
   }
 
   img {
@@ -27,7 +26,14 @@ $login-button-color: #0277bd;
 
   .login-link {
     text-decoration: none;
-    color: #0277bd
-  
+    color: #0277bd;
   }
+}
+.login-button-login-link {
+  background-color: white !important;
+  border-radius: 25px !important;
+  border-color: #0277bd !important;
+  border-style: solid !important;
+  border-width: medium !important;
+  color: #0277bd !important;
 }

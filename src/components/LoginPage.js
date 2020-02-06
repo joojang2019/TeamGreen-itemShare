@@ -70,15 +70,17 @@ const LoginPage = () => {
   return (
     <Grid container justify="center" className="page-container">
       <Grid item xs={12} sm={12} md={6} lg={6}>
-        {/* <Button
-          onClick={goBack}
-          color="default"
-          variant="contained"
-          startIcon={<ArrowBackIcon />}
-          className="back-button"
-        >
-          Back
-        </Button> */}
+        {
+          <Button
+            onClick={goBack}
+            color="default"
+            variant="contained"
+            startIcon={<ArrowBackIcon />}
+            className="back-button"
+          >
+            Back
+          </Button>
+        }
         <Card className="login-card">
           {/* <CardHeader className="login-header"></CardHeader> */}
           <form

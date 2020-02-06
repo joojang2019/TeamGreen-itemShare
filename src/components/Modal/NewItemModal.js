@@ -8,6 +8,7 @@ import { Button, Grid, Modal, TextField } from "@material-ui/core";
 import { db, storageRef } from "../../App";
 import { Link } from "react-router-dom";
 import "../../styles/NewItemModal.scss";
+import MenuItem from "@material-ui/core/MenuItem";
 
 const useStyles = makeStyles(theme => ({
   modal: {
@@ -107,13 +108,29 @@ const NewItemModal = ({ state }) => {
         <form onSubmit={postNewItem}>
           <h1>Post an Item</h1>
           {createTextField("name", "Name of Item (eg. Canon Powershot SX5) ")}
-          {createTextField("type", "Type of Item (eg. camera, bike)")}
+          <div>
+            <TextField
+              id="standard-basic"
+              label="Category of Item"
+              select
+              onChange={e => setFormField("type", e.target.value)}
+              fullWidth
+              margin="normal"
+              variant="outlined"
+            >
+              <MenuItem value={"clothing"}>Clothing</MenuItem>
+              <MenuItem value={"camera"}>Camera</MenuItem>
+              <MenuItem value={"school_supplies"}>School Supplies</MenuItem>
+              <MenuItem value={"bike"}>Bike</MenuItem>
+              <MenuItem value={"book"}>Textbook</MenuItem>
+              <MenuItem value={"other"}>Other</MenuItem>
+            </TextField>
+          </div>
           <div className={classes.divcontainer}>
             {/*refactor for cleanliness*/}
             <div>
               <TextField
                 placeholder="Price"
-                width="80%"
                 margin="normal"
                 InputLabelProps={{
                   shrink: true
@@ -123,28 +140,42 @@ const NewItemModal = ({ state }) => {
                 value={formData["price"]}
                 required
               />
-            </div> 
-            <label className="week-label">$/week</label>  
+            </div>
+            <label className="week-label">$/week</label>
           </div>
           <DatePicker value={formData.availableTill} onChange={onDateChange} />
           <p>Add a photo of your item:</p>
-          <input type="file" accept="image/*" onChange={onPhotoChange} />
-          <Grid container justify="center">
+          <input
+            fullWidth
+            margin="normal"
+            variant="outlined"
+            type="file"
+            className="input-button"
+            accept="image/*"
+            onChange={onPhotoChange}
+          />
+          <Grid container justify="center" className="outer-div">
             {user && Object.entries(user).length === 0 ? (
               <div>
                 <p>You should login to add a new item.</p>
                 <Link to="/login">
                   <Button
-                    className={classes.button}
+                    className="modal-login-button"
                     variant="contained"
                     color="primary"
+                    justify="center"
                   >
                     Login
                   </Button>
                 </Link>
               </div>
             ) : (
-              <Button type="submit" variant="contained" color="primary">
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                className="modal-button-submit"
+              >
                 Submit
               </Button>
             )}
