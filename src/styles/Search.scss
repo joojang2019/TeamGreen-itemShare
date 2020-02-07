@@ -2,8 +2,7 @@
   padding: 2px 4px;
   display: flex;
   align-content: center;
-  width: 80%;
-  margin-bottom: 25px;
+
 }
 .input {
   // margin-left: theme.spacing(1);
@@ -42,15 +41,25 @@
   border-right: 0.15em solid orange; /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
   border-right: 0.15em solid transparent;
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: 0.15em; /* Adjust as needed */
+  // margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: 0.05em; /* Adjust as needed */
   animation: typing 4s steps(60, end), blink-caret 0.75s step-end;
 }
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px) {
+    .myText {
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
 
 .searchbar {
   display: block;
   text-align: center;
   padding: 0.5em;
+  margin: 2em 0 0 0;
 }
 .buttons {
   text-align: center;

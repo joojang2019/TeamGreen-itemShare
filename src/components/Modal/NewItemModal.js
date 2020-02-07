@@ -158,7 +158,7 @@ const NewItemModal = ({ state }) => {
             {user && Object.entries(user).length === 0 ? (
               <div>
                 <p>You should login to add a new item.</p>
-                <Link to="/login">
+                <Link to="/login" style={{textDecoration: "none"}}>
                   <Button
                     className="modal-login-button"
                     variant="contained"

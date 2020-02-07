@@ -37,68 +37,74 @@ const Search = ({ searchQuery }) => {
 
   return (
     <div className="searchbar">
-      <b>
+      <div className="myText-wrapper">
         <p className="myText">
           itemShare. Northwestern&apos;s premier rental marketplace.
         </p>
-      </b>
-      <Grid container justify="center">
-        <Paper className="root">
-          <InputBase
-            className="input"
-            placeholder="Search for items"
-            value={currTerm}
-            onChange={changeCurrTerm}
-            onKeyDown={handleEnter}
-          />
-          <Link to={searchTerm}>
-            <IconButton className="iconButton" aria-label="search"></IconButton>
-            <SearchIcon />
-          </Link>
-        </Paper>
-      </Grid>
-      <div className="buttons" aria-label="small outlined button group">
-        <Button
-          className="bike"
-          onClick={() => {
-            changeCurrTermPreset("bike");
-          }}
-        >
-          <img src={bike_icon}></img>
-        </Button>
-        <Button
-          onClick={() => {
-            changeCurrTermPreset("clothing");
-          }}
-          className="clothing"
-        >
-          <img src={clothing_icon}></img>
-        </Button>
-        <Button
-          onClick={() => {
-            changeCurrTermPreset("camera");
-          }}
-          className="camera"
-        >
-          <img src={camera_icon}></img>
-        </Button>
-        <Button
-          onClick={() => {
-            changeCurrTermPreset("book");
-          }}
-          className="textbooks"
-        >
-          <img src={textbook_icon}></img>
-        </Button>
-        <Button
-          onClick={() => {
-            changeCurrTermPreset("school_supplies");
-          }}
-          className="school-supplies"
-        >
-          <img src={school_supplies_icon}></img>
-        </Button>
       </div>
+      <Grid container justify="center">
+        <Grid item xs={12} sm={12} md={9} lg={9}>
+          <Paper className="root">
+            <InputBase
+              className="input"
+              placeholder="Search for items"
+              value={currTerm}
+              onChange={changeCurrTerm}
+              onKeyDown={handleEnter}
+            />
+            <Link to={searchTerm}>
+              <IconButton className="iconButton" aria-label="search"></IconButton>
+              <SearchIcon />
+            </Link>
+          </Paper>
+        </Grid>
+      </Grid>
+      <Grid container justify="center">
+        <Grid item xs={12} sm={12} md={9} lg={9}>
+          <div className="buttons" aria-label="small outlined button group">
+            <Button
+              className="bike"
+              onClick={() => {
+                changeCurrTermPreset("bike");
+              }}
+            >
+              <img src={bike_icon}></img>
+            </Button>
+            <Button
+              onClick={() => {
+                changeCurrTermPreset("clothing");
+              }}
+              className="clothing"
+            >
+              <img src={clothing_icon}></img>
+            </Button>
+            <Button
+              onClick={() => {
+                changeCurrTermPreset("camera");
+              }}
+              className="camera"
+            >
+              <img src={camera_icon}></img>
+            </Button>
+            <Button
+              onClick={() => {
+                changeCurrTermPreset("book");
+              }}
+              className="textbooks"
+            >
+              <img src={textbook_icon}></img>
+            </Button>
+            <Button
+              onClick={() => {
+                changeCurrTermPreset("school_supplies");
+              }}
+              className="school-supplies"
+            >
+              <img src={school_supplies_icon}></img>
+            </Button>
+          </div>
+        </Grid>
+      </Grid>
     </div>
   );
 };
