@@ -9,6 +9,9 @@ const MainPage = ({ items, setItems, allItems }) => {
     "search_query"
   );
 
+  items = items.filter(entry => entry[1].isAvailable);
+  allItems = allItems.filter(entry => entry[1].isAvailable);
+
   if (searchQuery) {
     searchQuery = searchQuery.toLowerCase();
     const filteredItems = allItems.filter(entry => {

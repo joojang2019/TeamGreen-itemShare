@@ -5,6 +5,7 @@ import ItemPage from "./components/ItemPage";
 import LoginPage from "./components/LoginPage";
 import Footer from "./components/Footer";
 import UserProvider from "./contexts/UserContext";
+import AccountPage from "./components/AccountPage";
 
 // css styling: clean up imports after webpack is built in
 import "./App.css";
@@ -75,6 +76,11 @@ const App = () => {
             )}
           />
           <Route path="/login" exact render={() => <LoginPage />} />
+          <Route
+            path="/account"
+            exact
+            render={() => <AccountPage allItems={allItems} />}
+          />
           <Route path="/:id" render={() => <ItemPage allItems={allItems} />} />
         </Switch>
         <Footer />

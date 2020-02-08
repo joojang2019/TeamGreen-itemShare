@@ -43,14 +43,25 @@ const Banner = () => {
               </Button>
             </Link>
           ) : (
-            <Button
-              variant="contained"
-              color="primary"
-              className="login-button login-link"
-              onClick={handleLogOut}
-            >
-              Logout
-            </Button>
+            <div>
+              <Link to="/account">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className="login-button login-link"
+                >
+                  My Account
+                </Button>
+              </Link>
+              <Button
+                variant="contained"
+                color="primary"
+                className="login-button login-link"
+                onClick={handleLogOut}
+              >
+                Logout
+              </Button>
+            </div>
           )}
         </div>
       </Toolbar>
