@@ -8,8 +8,7 @@ import {
   MenuItem,
   Switch,
   Card,
-  Grid,
-  CardHeader
+  Grid
 } from "@material-ui/core";
 import { useHistory, useLocation } from "react-router-dom";
 import "../styles/Login.scss";

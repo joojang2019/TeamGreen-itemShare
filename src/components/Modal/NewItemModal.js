@@ -79,11 +79,13 @@ const NewItemModal = ({ state }) => {
     const downloadUrl = await snapshot.ref.getDownloadURL();
     const id = shortid.generate();
     const email = `${user.email}`;
+
     db.child(`items/${id}`).update({
       ...formData,
       id,
       email,
-      img: downloadUrl
+      img: downloadUrl,
+      isAvailable: true
     });
     setModalOpen(false);
     setFormData(emptyInputForm);
