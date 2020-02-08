@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { Switch } from "@material-ui/core";
 import { db } from "../App";
@@ -37,13 +37,15 @@ const AccountPage = ({ allItems }) => {
         Back
       </Button>
       {myItems.map(item => (
-        <div>
+        <div key={item.id}>
           <p>{item.name}</p>
           <img src={item.img} style={{ width: "100px" }}></img>
+          Unavailable
           <Switch
             onChange={() => handleAvailability(item)}
             checked={item.isAvailable}
           />
+          Available
         </div>
       ))}
     </div>

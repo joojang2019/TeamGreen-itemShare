@@ -44,7 +44,10 @@ const Banner = () => {
             </Link>
           ) : (
             <div>
-              <Link to="/account">
+              <Link
+                to="/account"
+                style={{ position: "absolute", width: "200px", right: "150px" }}
+              >
                 <Button
                   variant="contained"
                   color="primary"
