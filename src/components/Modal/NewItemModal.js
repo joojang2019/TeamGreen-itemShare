@@ -9,6 +9,7 @@ import { db, storageRef } from "../../App";
 import { Link } from "react-router-dom";
 import "../../styles/NewItemModal.scss";
 import MenuItem from "@material-ui/core/MenuItem";
+import InputAdornment from "@material-ui/core/InputAdornment";
 
 const useStyles = makeStyles(theme => ({
   modal: {
@@ -137,13 +138,18 @@ const NewItemModal = ({ state }) => {
                 InputLabelProps={{
                   shrink: true
                 }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  )
+                }}
                 variant="outlined"
                 onChange={e => setFormField("price", e.target.value)}
                 value={formData["price"]}
                 required
               />
             </div>
-            <label className="week-label">$/week</label>
+            <label className="week-label">/week</label>
           </div>
           <DatePicker value={formData.availableTill} onChange={onDateChange} />
           <p>Add a photo of your item:</p>

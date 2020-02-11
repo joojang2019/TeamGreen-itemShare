@@ -56,7 +56,7 @@ const ItemPage = ({ allItems }) => {
                   component="p"
                   className="price-text"
                 >
-                  <strong>Price:</strong> ${item.price} /day
+                  <strong>Price:</strong> ${item.price} /week
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12}>

@@ -10,7 +10,8 @@ import "../styles/Item.scss";
 export default function Item({ item }) {
   const { pathname, search } = useLocation();
   return (
-    <Link style={{ textDecoration: 'none' }}
+    <Link
+      style={{ textDecoration: "none" }}
       to={{
         pathname: `/${item.id}`,
         state: { prevURL: `${pathname}${search}` }
@@ -36,7 +37,7 @@ export default function Item({ item }) {
               component="p"
               className="typography"
             >
-              Price: ${item.price} /day
+              Price: ${item.price} /week
             </Typography>
             <Typography
               variant="body1"
