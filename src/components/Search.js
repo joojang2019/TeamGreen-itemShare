@@ -6,7 +6,6 @@ import Grid from "@material-ui/core/Grid";
 import InputBase from "@material-ui/core/InputBase";
 import IconButton from "@material-ui/core/IconButton";
 import "../styles/Search.scss";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
 import clothing_icon from "..//clothingicon.png";
 import bike_icon from "..//bike.png";
@@ -60,7 +59,7 @@ const Search = ({ searchQuery }) => {
         </Grid>
       </Grid>
       <Grid container justify="center">
-        <Grid item xs={12} sm={12} md={9} lg={9}>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
           <div className="buttons" aria-label="small outlined button group">
             <Button
               className="bike"
@@ -68,15 +67,15 @@ const Search = ({ searchQuery }) => {
                 changeCurrTermPreset("bike");
               }}
             >
-              <img src={bike_icon}></img>
+              <img src={bike_icon} alt=""></img>
             </Button>
-            <Button
+            <Button size="small"
               onClick={() => {
                 changeCurrTermPreset("clothing");
               }}
               className="clothing"
             >
-              <img src={clothing_icon}></img>
+              <img src={clothing_icon} alt=""></img>
             </Button>
             <Button
               onClick={() => {
@@ -84,7 +83,7 @@ const Search = ({ searchQuery }) => {
               }}
               className="camera"
             >
-              <img src={camera_icon}></img>
+              <img src={camera_icon} alt=""></img>
             </Button>
             <Button
               onClick={() => {
@@ -92,7 +91,7 @@ const Search = ({ searchQuery }) => {
               }}
               className="textbooks"
             >
-              <img src={textbook_icon}></img>
+              <img src={textbook_icon} alt=""></img>
             </Button>
             <Button
               onClick={() => {
@@ -100,7 +99,7 @@ const Search = ({ searchQuery }) => {
               }}
               className="school-supplies"
             >
-              <img src={school_supplies_icon}></img>
+              <img src={school_supplies_icon} alt=""></img>
             </Button>
           </div>
         </Grid>

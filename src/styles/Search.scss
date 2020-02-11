@@ -35,6 +35,7 @@
 }
 
 .myText {
+  font-weight: bold;
   width: auto;
   display: inline-block;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
@@ -45,15 +46,6 @@
   letter-spacing: 0.05em; /* Adjust as needed */
   animation: typing 4s steps(60, end), blink-caret 0.75s step-end;
 }
-
-@media only screen 
-  and (min-device-width: 320px) 
-  and (max-device-width: 480px) {
-    .myText {
-      font-size: 12px;
-      font-weight: bold;
-    }
-  }
 
 .searchbar {
   display: block;
@@ -71,9 +63,11 @@
   margin: 2%;
   border-radius: 50%;
 }
+
 .buttons .camera {
   background-color: lightpink;
 }
+
 .buttons .clothing {
   background-color: lightgreen;
 }
@@ -95,3 +89,21 @@
   width: 40px;
   height: 40px;
 }
+
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px) {
+    .myText {
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+
+    .buttons button {
+      justify-content: center;
+      align-content: center;
+      margin: 1em 0.5em 0 0;
+      border-radius: 50%;
+    }
+  }

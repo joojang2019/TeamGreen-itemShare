@@ -39,7 +39,7 @@ const ItemPage = ({ allItems }) => {
           </Grid>
           <CardContent className="card-content">
             <Grid container justify="center">
-              <Grid item xs={6} sm={6} md={6} lg={6}>
+              <Grid item xs={12} sm={12} md={12} lg={12}>
                 <Typography
                   gutterBottom
                   variant="h5"
@@ -49,19 +49,19 @@ const ItemPage = ({ allItems }) => {
                   {item.name}
                 </Typography>
               </Grid>
-              <Grid item xs={6} sm={6} md={6} lg={6}>
+              <Grid item xs={12} sm={12} md={12} lg={12}>
                 <Typography
                   color="textPrimary"
-                  //variant="h6"
-                  //component="h6"
+                  variant="body1"
+                  component="p"
                   className="price-text"
                 >
-                  ${item.price} /day
+                  <strong>Price:</strong> ${item.price} /day
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <Typography variant="body1" color="textPrimary" component="p">
-                  Available Until: {item.availableTill}
+                  <strong>Available Until:</strong> {item.availableTill}
                 </Typography>
               </Grid>
               {Object.entries(user).length === 0 ? (
@@ -72,13 +72,15 @@ const ItemPage = ({ allItems }) => {
                 </Grid>
               ) : (
                 <Grid item xs={12} sm={12} md={12} lg={12}>
-                  <Typography variant="body1" color="textPrimary" component="p">
-                    Seller's email: {item.email}
+                  <Typography variant="body1" color="textPrimary" component="p" >
+                    <strong>Contact Information:</strong>
+                    <div className="email">{item.email}</div>
                   </Typography>
 
                   <Button
                     variant="contained"
                     color="primary"
+                    className="contact-button"
                     href={`mailto:${item.email}`}
                   >
                     Email seller
