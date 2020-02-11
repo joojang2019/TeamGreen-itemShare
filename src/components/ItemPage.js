@@ -56,7 +56,7 @@ const ItemPage = ({ allItems }) => {
                   //component="h6"
                   className="price-text"
                 >
-                  ${item.price} /day
+                  ${item.price} /week
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12}>
